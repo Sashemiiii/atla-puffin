@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>atla + puffin — Seriously unserious gear.</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ─── Hero ───────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: calc(100vh - 56px);
+      min-height: 560px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Hero.webp');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 40px 56px;
+      color: #fff;
+      max-width: 660px;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+    .hero-heading {
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0.9;
+      max-width: 380px;
+      margin-bottom: 28px;
+    }
+
+    /* ─── Bestsellers ────────────────────────────────────── */
+    .bestsellers {
+      background: var(--pink);
+      padding: 64px 0 72px;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-head h2 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .section-head p {
+      font-size: 15px;
+      color: var(--mid);
+      margin-top: 8px;
+    }
+    .bestsellers-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 0 32px 8px;
+      scrollbar-width: none;
+    }
+    .bestsellers-scroll::-webkit-scrollbar { display: none; }
+    .bestsellers-scroll .card {
+      min-width: 240px;
+      flex-shrink: 0;
+    }
+    .shop-all-wrap {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    /* ─── Tagline strip ──────────────────────────────────── */
+    .tagline-strip {
+      background: var(--orange);
+      padding: 56px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .tagline-strip h2 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #fff;
+      max-width: 520px;
+      line-height: 1.05;
+    }
+    .tagline-strip p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      max-width: 300px;
+      line-height: 1.5;
+    }
+    @media (max-width: 700px) {
+      .tagline-strip { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="shop.html">Shop</a>
+  </div>
+  <a class="nav-logo" href="index.html">
+    <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" />
+  </a>
+  <div style="width:80px"></div><!-- spacer -->
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Seriously unserious gear</p>
+      <h1 class="hero-heading">Built for the sheer joy of it.</h1>
+      <p class="hero-sub">Colourful, affordable, playful gear for people who'd rather laugh than PB.</p>
+      <a href="shop.html" class="btn btn-orange">Discover what's new</a>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS -->
+  <section class="bestsellers">
+    <div class="section-head">
+      <h2>Bestsellers</h2>
+      <p>The ones everyone keeps coming back for.</p>
+    </div>
+    <div class="bestsellers-scroll">
+
+      <div class="card">
+        <div class="card-img">
+          <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Toot.jpg" alt="Toot Pickleball Paddle" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <p class="card-name">Toot Pickleball Paddle</p>
+          <p class="card-sub">Paddle</p>
+          <p class="card-price">$49.00</p>
+          <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">
+          <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Sitron.jpg" alt="Sitron Pickle Bag" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <p class="card-name">Sitron Pickle Bag</p>
+          <p class="card-sub">Bag</p>
+          <p class="card-price">$39.00</p>
+          <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">
+          <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Angry.jpg" alt="Angry Pickleball Paddle" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <p class="card-name">Angry Pickleball Paddle</p>
+          <p class="card-sub">Paddle</p>
+          <p class="card-price">$49.00</p>
+          <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">
+          <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Dobbelten.jpg" alt="Dobbelten Bundle" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <p class="card-name">Dobbelten Bundle</p>
+          <p class="card-sub">Bundle</p>
+          <p class="card-price">From $88.00</p>
+          <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">
+          <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Kull.jpg" alt="Kull Pickle Bag" loading="lazy" />
+        </div>
+        <div class="card-body">
+          <p class="card-name">Kull Pickle Bag</p>
+          <p class="card-sub">Bag</p>
+          <p class="card-price">$39.00</p>
+          <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="shop-all-wrap">
+      <a href="shop.html" class="btn btn-dark">Shop All</a>
+    </div>
+  </section>
+
+  <!-- TAGLINE STRIP -->
+  <section class="tagline-strip">
+    <h2>Life's too short for boring kits.</h2>
+    <p>We make sporting goods for people who'd rather laugh than PB — colourful, affordable, and built for the sheer joy of it.</p>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">atla + puffin</div>
+  <div class="footer-col">
+    <h4>Menu</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Shipping Info</a></li>
+      <li><a href="#">Community Events</a></li>
+    </ul>
+    <h4 style="margin-top:20px">Follow us</h4>
+    <div class="footer-socials">
+      <a href="#" aria-label="TikTok">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.53V6.77a4.85 4.85 0 01-1-.08z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 atla + puffin. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

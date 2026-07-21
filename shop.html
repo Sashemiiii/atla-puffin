@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — atla + puffin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .shop-header {
+      background: #fff;
+      padding: 48px 0 0;
+      text-align: center;
+    }
+    .shop-header h1 {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+    .shop-header p {
+      font-size: 15px;
+      color: var(--mid);
+      margin-top: 8px;
+      max-width: 440px;
+      margin-inline: auto;
+      line-height: 1.5;
+    }
+
+    /* ─── Filters ─────────────────────────────────────────── */
+    .filters {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 28px 0 32px;
+      align-items: center;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border-radius: 40px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: var(--dark);
+    }
+    .filter-btn:hover { border-color: var(--dark); }
+    .filter-btn.active {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+    .filter-count {
+      font-size: 12px;
+      color: var(--mid);
+      margin-left: auto;
+      align-self: center;
+    }
+
+    /* ─── Grid ───────────────────────────────────────────── */
+    .shop-grid {
+      padding-bottom: 80px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .product-grid { grid-template-columns: 1fr; } }
+
+    .product-item { display: block; }
+    .product-item[data-hidden="true"] { display: none; }
+
+    /* ─── Badge ──────────────────────────────────────────── */
+    .card-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="shop.html" class="active">Shop</a>
+  </div>
+  <a class="nav-logo" href="index.html">
+    <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" />
+  </a>
+  <div style="width:80px"></div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="shop-header">
+    <div class="container">
+      <h1>Shop</h1>
+      <p>Browsing for your next fun gathering, competition or just looking around for options? See them all here.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="paddle">Paddles</button>
+      <button class="filter-btn" data-filter="bag">Bags</button>
+      <button class="filter-btn" data-filter="accessory">Accessories</button>
+      <button class="filter-btn" data-filter="bundle">Bundles</button>
+      <span class="filter-count" id="count"></span>
+    </div>
+  </div>
+
+  <div class="shop-grid container">
+    <div class="product-grid" id="grid">
+
+      <!-- PADDLES -->
+      <div class="product-item" data-cat="paddle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Toot.jpg" alt="Toot Pickleball Paddle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Toot Pickleball Paddle</p>
+            <p class="card-sub">Paddle</p>
+            <p class="card-price">$49.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="paddle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Angry.jpg" alt="Angry Pickleball Paddle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Angry Pickleball Paddle</p>
+            <p class="card-sub">Paddle</p>
+            <p class="card-price">$49.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="paddle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Lizard.jpg" alt="Lizard Pickleball Paddle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Lizard Pickleball Paddle</p>
+            <p class="card-sub">Paddle</p>
+            <p class="card-price">$49.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="paddle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Moody.jpg" alt="Moody Pickleball Paddle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Moody Pickleball Paddle</p>
+            <p class="card-sub">Paddle</p>
+            <p class="card-price">$49.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="paddle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Unhinged.jpg" alt="Unhinged Pickleball Paddle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Unhinged Pickleball Paddle</p>
+            <p class="card-sub">Paddle</p>
+            <p class="card-price">$49.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="paddle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Cyclops.jpg" alt="Cyclops Pickleball Paddle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Cyclops Pickleball Paddle</p>
+            <p class="card-sub">Paddle</p>
+            <p class="card-price">$49.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAGS -->
+      <div class="product-item" data-cat="bag">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Snø.jpg" alt="Snø Pickle Bag" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Snø Pickle Bag</p>
+            <p class="card-sub">Bag</p>
+            <p class="card-price">$39.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="bag">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Fjord.jpg" alt="Fjord Pickle Bag" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Fjord Pickle Bag</p>
+            <p class="card-sub">Bag</p>
+            <p class="card-price">$39.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="bag">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Sitron.jpg" alt="Sitron Pickle Bag" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Sitron Pickle Bag</p>
+            <p class="card-sub">Bag</p>
+            <p class="card-price">$39.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="bag">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Lavendel.jpg" alt="Lavendel Pickle Bag" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Lavendel Pickle Bag</p>
+            <p class="card-sub">Bag</p>
+            <p class="card-price">$39.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="bag">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Blomst.jpg" alt="Blomst Pickle Bag" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Blomst Pickle Bag</p>
+            <p class="card-sub">Bag</p>
+            <p class="card-price">$39.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="bag">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Kull.jpg" alt="Kull Pickle Bag" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Kull Pickle Bag</p>
+            <p class="card-sub">Bag</p>
+            <p class="card-price">$39.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCESSORIES -->
+      <div class="product-item" data-cat="accessory">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Kampball.jpg" alt="Kampball Pickleball" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Kampball Pickleball</p>
+            <p class="card-sub">Balls</p>
+            <p class="card-price">$6.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="accessory">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Overgrep.jpg" alt="Overgrep Grip Tape" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <p class="card-name">Overgrep Grip Tape</p>
+            <p class="card-sub">Grip</p>
+            <p class="card-price">$15.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUNDLES -->
+      <div class="product-item" data-cat="bundle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Dobbelten.jpg" alt="Dobbelten Bundle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <span class="card-badge">Bundle</span>
+            <p class="card-name">Dobbelten Bundle</p>
+            <p class="card-sub">2× Paddle + Extras</p>
+            <p class="card-price">From $88.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-item" data-cat="bundle">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Rallyløp.jpg" alt="Rallyløp Bundle" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <span class="card-badge">Bundle</span>
+            <p class="card-name">Rallyløp Bundle</p>
+            <p class="card-sub">Paddle + Bag + Extras</p>
+            <p class="card-price">From $78.00</p>
+            <a href="https://shopee.sg" target="_blank" rel="noopener" class="card-buy">Buy on Shopee</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+  </div><!-- /shop-grid -->
+
+</div><!-- /page-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">atla + puffin</div>
+  <div class="footer-col">
+    <h4>Menu</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Shipping Info</a></li>
+      <li><a href="#">Community Events</a></li>
+    </ul>
+    <h4 style="margin-top:20px">Follow us</h4>
+    <div class="footer-socials">
+      <a href="#" aria-label="TikTok">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.53V6.77a4.85 4.85 0 01-1-.08z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 atla + puffin. All rights reserved.</div>
+</footer>
+
+<script>
+  const btns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.product-item');
+  const countEl = document.getElementById('count');
+
+  function updateCount() {
+    const visible = [...items].filter(i => i.getAttribute('data-hidden') !== 'true').length;
+    countEl.textContent = `${visible} product${visible !== 1 ? 's' : ''}`;
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(item => {
+        const match = f === 'all' || item.dataset.cat === f;
+        item.setAttribute('data-hidden', match ? 'false' : 'true');
+        item.style.display = match ? 'block' : 'none';
+      });
+      updateCount();
+    });
+  });
+
+  updateCount();
+</script>
+
+</body>
+</html>

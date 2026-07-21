@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — atla + puffin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ─── About Hero ─────────────────────────────────────── */
+    .about-hero {
+      background: var(--orange);
+      padding: 72px 0 0;
+      overflow: hidden;
+    }
+    .about-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .about-hero-text {
+      padding-bottom: 60px;
+    }
+    .about-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 16px;
+    }
+    .about-hero-text h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .about-hero-text p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+    .about-hero-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      align-items: end;
+    }
+    .about-hero-imgs img {
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+      object-fit: cover;
+      aspect-ratio: 3/4;
+    }
+    .about-hero-imgs img:first-child {
+      margin-top: 40px;
+    }
+
+    /* ─── Brand Story ─────────────────────────────────────── */
+    .brand-story {
+      padding: 80px 0;
+    }
+    .brand-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .brand-story h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      line-height: 1.05;
+    }
+    .brand-story p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+    .brand-story-img {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .brand-story-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─── Values ──────────────────────────────────────────── */
+    .values {
+      background: var(--pink);
+      padding: 72px 0;
+    }
+    .values h2 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .value-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 28px;
+    }
+    .value-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .value-item h3 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .value-item p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--mid);
+    }
+
+    /* ─── CTA ─────────────────────────────────────────────── */
+    .about-cta {
+      background: var(--lavender);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .about-cta h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      line-height: 1.05;
+    }
+    .about-cta p {
+      font-size: 16px;
+      color: var(--mid);
+      margin-bottom: 32px;
+      max-width: 380px;
+      margin-inline: auto;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 800px) {
+      .about-hero-inner { grid-template-columns: 1fr; }
+      .about-hero-imgs { margin-top: 40px; }
+      .brand-story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="about.html" class="active">About</a>
+    <a href="shop.html">Shop</a>
+  </div>
+  <a class="nav-logo" href="index.html">
+    <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" />
+  </a>
+  <div style="width:80px"></div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-hero-text">
+        <p class="about-hero-eyebrow">Behind the brand</p>
+        <h1>We make fun mandatory.</h1>
+        <p>Founded in Singapore, the little red dot, atla + puffin makes sporting gear that's the opposite of what brands are going for today. Fun.</p>
+      </div>
+      <div class="about-hero-imgs">
+        <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Toot.jpg" alt="Toot paddle" />
+        <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Sitron.jpg" alt="Sitron bag" />
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="brand-story">
+    <div class="container">
+      <div class="brand-story-grid">
+        <div>
+          <h2>Behind the brand</h2>
+          <p>In a world of ultra-performance and intense branding, we create playful, functional gear that brings fun back into movement. We make sporting goods for people who don't take themselves too seriously.</p>
+          <p>Whether you're running a marathon, missing every badminton shot, or just stretching dramatically in the park — atla + puffin brings you sport essentials with just a little bit of personality, humour and even chaos.</p>
+          <p>We're built for the community, not the podium. Come for the paddles, stay for the vibes.</p>
+        </div>
+        <div class="brand-story-img">
+          <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Dobbelten.jpg" alt="atla + puffin gear" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="container">
+      <h2>What we stand for</h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <p class="value-num">01</p>
+          <h3>Playful by design</h3>
+          <p>Every product we make should put a smile on your face before you even pick it up. Googly eyes are a feature, not a bug.</p>
+        </div>
+        <div class="value-item">
+          <p class="value-num">02</p>
+          <h3>Accessible first</h3>
+          <p>Great gear shouldn't cost a month's rent. We keep prices honest so more people can play, more often.</p>
+        </div>
+        <div class="value-item">
+          <p class="value-num">03</p>
+          <h3>Community over clout</h3>
+          <p>We're built for park games and community courts, not brand deals and highlight reels. Your game, your rules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <h2>Ready to play?</h2>
+    <p>Pick your paddle, grab a bag, and bring the chaos to your next game.</p>
+    <a href="shop.html" class="btn btn-dark">Shop the collection</a>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">atla + puffin</div>
+  <div class="footer-col">
+    <h4>Menu</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Shipping Info</a></li>
+      <li><a href="#">Community Events</a></li>
+    </ul>
+    <h4 style="margin-top:20px">Follow us</h4>
+    <div class="footer-socials">
+      <a href="#" aria-label="TikTok">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.53V6.77a4.85 4.85 0 01-1-.08z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 atla + puffin. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
