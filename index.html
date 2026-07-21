@@ -13,8 +13,7 @@
       min-height: 560px;
       overflow: hidden;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      align-items: flex-end;
     }
     .hero-bg {
       position: absolute;
@@ -27,68 +26,37 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
     }
-    /* text block — mid right */
     .hero-content {
-      position: absolute;
-      z-index: 2;
-      top: 50%;
-      right: 48px;
-      transform: translateY(-50%);
-      color: #fff;
-      max-width: 280px;
-      text-align: right;
-    }
-    .hero-eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 10px;
-    }
-    .hero-heading {
-      font-size: clamp(20px, 2.5vw, 32px);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-    .hero-sub {
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.55;
-      opacity: 0.85;
-      margin-bottom: 20px;
-    }
-    /* wordmark — full width across bottom */
-    .hero-wordmark {
       position: relative;
       z-index: 2;
-      width: 100%;
-      padding: 0 20px 8px;
-      line-height: 0.85;
-    }
-    .hero-wordmark span {
-      display: block;
-      font-size: 13.5vw;
-      font-weight: 800;
-      letter-spacing: -0.05em;
+      padding: 0 40px 56px;
       color: #fff;
-      white-space: nowrap;
-      width: 100%;
-      text-align: left;
+      max-width: 660px;
     }
-    @media (max-width: 640px) {
-      .hero-content {
-        top: auto;
-        bottom: 220px;
-        right: 20px;
-        transform: none;
-        max-width: 200px;
-      }
-      .hero-wordmark { padding: 0 12px 6px; }
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+    .hero-heading {
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0.9;
+      max-width: 380px;
+      margin-bottom: 28px;
     }
 
     /* ─── Bestsellers ────────────────────────────────────── */
@@ -184,9 +152,6 @@
       <h1 class="hero-heading">Built for the sheer joy of it.</h1>
       <p class="hero-sub">Colourful, affordable, playful gear for people who'd rather laugh than PB.</p>
       <a href="shop.html" class="btn btn-orange">Discover what's new</a>
-    </div>
-    <div class="hero-wordmark">
-      <span>atla + puffin</span>
     </div>
   </section>
 
@@ -303,21 +268,5 @@
   <div class="footer-bottom">© 2025 atla + puffin. All rights reserved.</div>
 </footer>
 
-<script>
-  function fitWordmark() {
-    const el = document.querySelector('.hero-wordmark span');
-    if (!el) return;
-    const parent = el.parentElement;
-    let size = 10;
-    el.style.fontSize = size + 'px';
-    while (el.scrollWidth < parent.clientWidth - 40 && size < 300) {
-      size++;
-      el.style.fontSize = size + 'px';
-    }
-    el.style.fontSize = (size - 1) + 'px';
-  }
-  fitWordmark();
-  window.addEventListener('resize', fitWordmark);
-</script>
 </body>
 </html>
