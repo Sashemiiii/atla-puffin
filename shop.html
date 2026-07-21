@@ -1,9 +1,11 @@
+cat > /home/claude/shop.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop — atla + puffin</title>
+  <meta name="description" content="Browse all atla + puffin pickleball paddles, bags, accessories and bundles. Playful, affordable gear made for the joy of the game." />
   <link rel="stylesheet" href="style.css" />
   <style>
     .shop-header {
@@ -24,8 +26,6 @@
       margin-inline: auto;
       line-height: 1.5;
     }
-
-    /* ─── Filters ─────────────────────────────────────────── */
     .filters {
       display: flex;
       gap: 16px;
@@ -57,11 +57,7 @@
       margin-left: auto;
       align-self: center;
     }
-
-    /* ─── Grid ───────────────────────────────────────────── */
-    .shop-grid {
-      padding-bottom: 80px;
-    }
+    .shop-grid { padding-bottom: 80px; }
     .product-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -69,12 +65,9 @@
     }
     @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 560px)  { .product-grid { grid-template-columns: 1fr; } }
-
     .product-item { display: flex; }
     .product-item .card { width: 100%; }
     .product-item[data-hidden="true"] { display: none; }
-
-    /* ─── Badge ──────────────────────────────────────────── */
     .card-badge {
       display: inline-block;
       background: var(--orange);
@@ -91,7 +84,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-links">
     <a href="about.html">About</a>
@@ -104,7 +96,6 @@
 </nav>
 
 <div class="page-wrap">
-
   <div class="shop-header">
     <div class="container">
       <h1>Shop</h1>
@@ -126,12 +117,9 @@
   <div class="shop-grid container">
     <div class="product-grid" id="grid">
 
-      <!-- PADDLES -->
       <div class="product-item" data-cat="paddle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Toot.jpg" alt="Toot Pickleball Paddle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Toot.jpg" alt="Toot Pickleball Paddle" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Toot Pickleball Paddle</p>
             <p class="card-sub">Paddle</p>
@@ -143,9 +131,7 @@
 
       <div class="product-item" data-cat="paddle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Angry.jpg" alt="Angry Pickleball Paddle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Angry.jpg" alt="Angry Pickleball Paddle" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Angry Pickleball Paddle</p>
             <p class="card-sub">Paddle</p>
@@ -157,9 +143,7 @@
 
       <div class="product-item" data-cat="paddle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Lizard.jpg" alt="Lizard Pickleball Paddle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Lizard.jpg" alt="Lizard Pickleball Paddle" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Lizard Pickleball Paddle</p>
             <p class="card-sub">Paddle</p>
@@ -171,9 +155,7 @@
 
       <div class="product-item" data-cat="paddle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Moody.jpg" alt="Moody Pickleball Paddle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Moody.jpg" alt="Moody Pickleball Paddle" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Moody Pickleball Paddle</p>
             <p class="card-sub">Paddle</p>
@@ -185,9 +167,7 @@
 
       <div class="product-item" data-cat="paddle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Unhinged.jpg" alt="Unhinged Pickleball Paddle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Unhinged.jpg" alt="Unhinged Pickleball Paddle" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Unhinged Pickleball Paddle</p>
             <p class="card-sub">Paddle</p>
@@ -199,9 +179,7 @@
 
       <div class="product-item" data-cat="paddle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Cyclops.jpg" alt="Cyclops Pickleball Paddle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Cyclops.jpg" alt="Cyclops Pickleball Paddle" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Cyclops Pickleball Paddle</p>
             <p class="card-sub">Paddle</p>
@@ -211,12 +189,9 @@
         </div>
       </div>
 
-      <!-- BAGS -->
       <div class="product-item" data-cat="bag">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Snø.jpg" alt="Snø Pickle Bag" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Snø.jpg" alt="Snø Pickle Bag" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Snø Pickle Bag</p>
             <p class="card-sub">Bag</p>
@@ -228,9 +203,7 @@
 
       <div class="product-item" data-cat="bag">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Fjord.jpg" alt="Fjord Pickle Bag" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Fjord.jpg" alt="Fjord Pickle Bag" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Fjord Pickle Bag</p>
             <p class="card-sub">Bag</p>
@@ -242,9 +215,7 @@
 
       <div class="product-item" data-cat="bag">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Sitron.jpg" alt="Sitron Pickle Bag" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Sitron.jpg" alt="Sitron Pickle Bag" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Sitron Pickle Bag</p>
             <p class="card-sub">Bag</p>
@@ -256,9 +227,7 @@
 
       <div class="product-item" data-cat="bag">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Lavendel.jpg" alt="Lavendel Pickle Bag" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Lavendel.jpg" alt="Lavendel Pickle Bag" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Lavendel Pickle Bag</p>
             <p class="card-sub">Bag</p>
@@ -270,9 +239,7 @@
 
       <div class="product-item" data-cat="bag">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Blomst.jpg" alt="Blomst Pickle Bag" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Blomst.jpg" alt="Blomst Pickle Bag" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Blomst Pickle Bag</p>
             <p class="card-sub">Bag</p>
@@ -284,9 +251,7 @@
 
       <div class="product-item" data-cat="bag">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Kull.jpg" alt="Kull Pickle Bag" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Kull.jpg" alt="Kull Pickle Bag" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Kull Pickle Bag</p>
             <p class="card-sub">Bag</p>
@@ -296,12 +261,9 @@
         </div>
       </div>
 
-      <!-- ACCESSORIES -->
       <div class="product-item" data-cat="accessory">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Kampball.jpg" alt="Kampball Pickleball" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Kampball.jpg" alt="Kampball Pickleball" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Kampball Pickleball</p>
             <p class="card-sub">Balls</p>
@@ -313,9 +275,7 @@
 
       <div class="product-item" data-cat="accessory">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Overgrep.jpg" alt="Overgrep Grip Tape" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Overgrep.jpg" alt="Overgrep Grip Tape" loading="lazy" /></div>
           <div class="card-body">
             <p class="card-name">Overgrep Grip Tape</p>
             <p class="card-sub">Grip</p>
@@ -325,12 +285,9 @@
         </div>
       </div>
 
-      <!-- BUNDLES -->
       <div class="product-item" data-cat="bundle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Dobbelten.jpg" alt="Dobbelten Bundle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Dobbelten.jpg" alt="Dobbelten Bundle" loading="lazy" /></div>
           <div class="card-body">
             <span class="card-badge">Bundle</span>
             <p class="card-name">Dobbelten Bundle</p>
@@ -343,9 +300,7 @@
 
       <div class="product-item" data-cat="bundle">
         <div class="card">
-          <div class="card-img">
-            <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Rallyløp.jpg" alt="Rallyløp Bundle" loading="lazy" />
-          </div>
+          <div class="card-img"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Rallyløp.jpg" alt="Rallyløp Bundle" loading="lazy" /></div>
           <div class="card-body">
             <span class="card-badge">Bundle</span>
             <p class="card-name">Rallyløp Bundle</p>
@@ -356,12 +311,10 @@
         </div>
       </div>
 
-    </div><!-- /product-grid -->
-  </div><!-- /shop-grid -->
+    </div>
+  </div>
+</div>
 
-</div><!-- /page-wrap -->
-
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">atla + puffin</div>
   <div class="footer-col">
@@ -370,6 +323,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="shop.html">Shop</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
     </ul>
   </div>
   <div class="footer-col">
@@ -418,6 +372,6 @@
 
   updateCount();
 </script>
-
 </body>
 </html>
+HTMLEOF
