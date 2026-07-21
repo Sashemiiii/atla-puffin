@@ -59,6 +59,25 @@
       margin-bottom: 28px;
     }
 
+    /* ─── Hero logo watermark ────────────────────────────── */
+    .hero-logo-watermark {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      width: 52%;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-logo-watermark img {
+      width: 100%;
+      height: auto;
+      display: block;
+      /* invert white + slight transparency so it reads as a light watermark */
+      filter: invert(1) brightness(2);
+      opacity: 0.92;
+    }
+
     /* ─── Bestsellers ────────────────────────────────────── */
     .bestsellers {
       background: var(--pink);
@@ -124,6 +143,7 @@
     }
     @media (max-width: 700px) {
       .tagline-strip { flex-direction: column; gap: 20px; }
+      .hero-logo-watermark { width: 75%; }
     }
   </style>
 </head>
@@ -152,6 +172,10 @@
       <h1 class="hero-heading">Built for the sheer joy of it.</h1>
       <p class="hero-sub">Colourful, affordable, playful gear for people who'd rather laugh than PB.</p>
       <a href="shop.html" class="btn btn-orange">Discover what's new</a>
+    </div>
+    <!-- Large logo watermark, bottom-right -->
+    <div class="hero-logo-watermark">
+      <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="" aria-hidden="true" />
     </div>
   </section>
 
