@@ -70,7 +70,8 @@
     @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 560px)  { .product-grid { grid-template-columns: 1fr; } }
 
-    .product-item { display: block; }
+    .product-item { display: flex; }
+    .product-item .card { width: 100%; }
     .product-item[data-hidden="true"] { display: none; }
 
     /* ─── Badge ──────────────────────────────────────────── */
