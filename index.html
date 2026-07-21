@@ -13,7 +13,8 @@
       min-height: 560px;
       overflow: hidden;
       display: flex;
-      align-items: flex-end;
+      flex-direction: column;
+      justify-content: flex-end;
     }
     .hero-bg {
       position: absolute;
@@ -26,37 +27,66 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
     }
+    /* text block — mid right */
     .hero-content {
-      position: relative;
+      position: absolute;
       z-index: 2;
-      padding: 0 40px 56px;
+      top: 50%;
+      right: 48px;
+      transform: translateY(-50%);
       color: #fff;
-      max-width: 660px;
+      max-width: 280px;
+      text-align: right;
     }
     .hero-eyebrow {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      opacity: 0.85;
-      margin-bottom: 12px;
+      opacity: 0.7;
+      margin-bottom: 10px;
     }
     .hero-heading {
-      font-size: clamp(42px, 7vw, 80px);
+      font-size: clamp(20px, 2.5vw, 32px);
       font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      margin-bottom: 18px;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
     }
     .hero-sub {
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 400;
-      line-height: 1.5;
-      opacity: 0.9;
-      max-width: 380px;
-      margin-bottom: 28px;
+      line-height: 1.55;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+    /* wordmark — full width across bottom */
+    .hero-wordmark {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 20px 8px;
+      line-height: 0.85;
+    }
+    .hero-wordmark span {
+      display: block;
+      font-size: clamp(64px, 13.5vw, 160px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: #fff;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .hero-content {
+        top: auto;
+        bottom: 220px;
+        right: 20px;
+        transform: none;
+        max-width: 200px;
+      }
+      .hero-wordmark { padding: 0 12px 6px; }
     }
 
     /* ─── Bestsellers ────────────────────────────────────── */
@@ -152,6 +182,9 @@
       <h1 class="hero-heading">Built for the sheer joy of it.</h1>
       <p class="hero-sub">Colourful, affordable, playful gear for people who'd rather laugh than PB.</p>
       <a href="shop.html" class="btn btn-orange">Discover what's new</a>
+    </div>
+    <div class="hero-wordmark">
+      <span>atla + puffin</span>
     </div>
   </section>
 
