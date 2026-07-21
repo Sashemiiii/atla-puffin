@@ -62,7 +62,7 @@
     /* ─── Bestsellers ────────────────────────────────────── */
     .bestsellers {
       background: var(--pink);
-      padding: 64px 0 72px;
+      padding: 40px 0 48px;
     }
     .section-head {
       text-align: center;
@@ -87,9 +87,13 @@
     }
     .bestsellers-scroll::-webkit-scrollbar { display: none; }
     .bestsellers-scroll .card {
-      min-width: 240px;
+      min-width: 160px;
+      max-width: 160px;
       flex-shrink: 0;
     }
+    .bestsellers-scroll .card .card-name { font-size: 12px; }
+    .bestsellers-scroll .card .card-price { font-size: 13px; }
+    .bestsellers-scroll .card .card-buy { font-size: 11px; padding: 8px; }
     .shop-all-wrap {
       text-align: center;
       margin-top: 36px;

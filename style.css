@@ -135,6 +135,8 @@ footer {
   overflow: hidden;
   transition: transform 0.2s;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 .card:hover { transform: translateY(-4px); }
 .card-img {
@@ -144,6 +146,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 .card-img img {
   width: 100%;
@@ -152,7 +155,12 @@ footer {
   transition: transform 0.3s;
 }
 .card:hover .card-img img { transform: scale(1.04); }
-.card-body { padding: 14px 16px 18px; }
+.card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .card-name {
   font-size: 14px;
   font-weight: 600;
@@ -166,6 +174,7 @@ footer {
 .card-price {
   font-size: 16px;
   font-weight: 700;
+  margin-top: auto;
 }
 .card-price .original {
   font-size: 13px;
