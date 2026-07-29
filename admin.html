@@ -78,7 +78,6 @@
     .editor.active { display: flex; }
 
     .editor-topbar { border-bottom: 1px solid var(--border); background: #fff; padding: 12px 24px; display: flex; align-items: center; gap: 12px; position: sticky; top: 52px; z-index: 100; }
-    .editor-topbar-title { font-size: 13px; font-weight: 700; color: var(--mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px; }
     .et-spacer { flex: 1; }
     .save-status { font-size: 12px; color: var(--mid); opacity: 0; transition: opacity .3s; }
     .save-status.show { opacity: 1; }
@@ -208,7 +207,6 @@
 
       <div class="editor" id="editor">
         <div class="editor-topbar">
-          <span class="editor-topbar-title" id="editorTopTitle">New post</span>
           <span class="et-spacer"></span>
           <span class="save-status" id="saveStatus">✓ Saved</span>
           <button class="btn-delete" id="deleteBtn" onclick="confirmDelete()">Delete</button>
@@ -460,7 +458,6 @@
     currentId = null;
     fillEditor({});
     document.getElementById('deleteBtn').style.display = 'none';
-    document.getElementById('editorTopTitle').textContent = 'New post';
     renderSidebar();
     showEditor();
     document.getElementById('postTitle').focus();
@@ -472,7 +469,6 @@
     currentId = id;
     fillEditor(post);
     document.getElementById('deleteBtn').style.display = 'inline-flex';
-    document.getElementById('editorTopTitle').textContent = post.title || 'Untitled';
     renderSidebar();
     showEditor();
   }
@@ -519,7 +515,6 @@
       const idx = posts.findIndex(p => p.id === post.id);
       if (idx > -1) posts[idx] = post; else posts.unshift(post);
 
-      document.getElementById('editorTopTitle').textContent = post.title;
       document.getElementById('postSlug').value = post.slug;
       renderSidebar();
       updateSeoPreview();
@@ -601,7 +596,6 @@
   }
 
   function onTitleChange(el) {
-    document.getElementById('editorTopTitle').textContent = el.value || 'New post';
     updateSeoPreview();
   }
   function onExcerptChange() { updateSeoPreview(); }
