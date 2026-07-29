@@ -1,4 +1,4 @@
-cat > /home/claude/shop.html << 'HTMLEOF'
+cat > /home/claude/shop << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,10 +86,10 @@ cat > /home/claude/shop.html << 'HTMLEOF'
 
 <nav>
   <div class="nav-links">
-    <a href="about.html">About</a>
-    <a href="shop.html" class="active">Shop</a>
+    <a href="/about">About</a>
+    <a href="/shop" class="active">Shop</a>
   </div>
-  <a class="nav-logo" href="index.html">
+  <a class="nav-logo" href="/">
     <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" />
   </a>
   <div style="width:80px"></div>
@@ -320,10 +320,10 @@ cat > /home/claude/shop.html << 'HTMLEOF'
   <div class="footer-col">
     <h4>Menu</h4>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/shop">Shop</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blog">Blog</a></li>
     </ul>
   </div>
   <div class="footer-col">
