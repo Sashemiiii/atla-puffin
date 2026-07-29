@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Meta tags filled dynamically below -->
+  <title>Loading… — atla + puffin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --font: 'Inter', sans-serif;
+      --orange: #FF5C00; --pink: #FFE8E0; --lavender: #EAE5F5;
+      --cream: #FFF9F5; --dark: #111; --mid: #666; --border: #E8E2DC; --r: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-family: var(--font); color: var(--dark); background: var(--cream); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,249,245,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border); height: 56px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 32px;
+    }
+    .nav-links { display: flex; gap: 24px; width: 80px; }
+    .nav-links a { font-size: 13px; font-weight: 600; color: var(--mid); transition: color .15s; }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-logo img { height: 28px; }
+
+    .post-wrap { max-width: 740px; margin: 0 auto; padding: 48px 32px 80px; }
+
+    .breadcrumb { font-size: 13px; color: var(--mid); margin-bottom: 32px; }
+    .breadcrumb a { color: var(--orange); }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .post-tag { display: inline-block; background: var(--pink); color: var(--orange); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 16px; }
+
+    .post-title { font-size: clamp(28px, 5vw, 52px); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 20px; }
+
+    .post-meta { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--mid); flex-wrap: wrap; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+
+    .post-hero { border-radius: var(--r); overflow: hidden; aspect-ratio: 16/7; background: var(--pink); margin-bottom: 40px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+    .post-hero img { width: 100%; height: 100%; object-fit: cover; }
+
+    .post-body { font-size: 17px; line-height: 1.78; color: #222; }
+    .post-body h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; margin: 40px 0 16px; color: var(--dark); }
+    .post-body h3 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; }
+    .post-body p { margin-bottom: 20px; }
+    .post-body ul, .post-body ol { padding-left: 24px; margin-bottom: 20px; }
+    .post-body li { margin-bottom: 8px; }
+    .post-body strong { font-weight: 700; }
+    .post-body em { font-style: italic; }
+    .post-body a { color: var(--orange); text-decoration: underline; }
+    .post-body blockquote { border-left: 3px solid var(--orange); padding-left: 20px; margin: 28px 0; color: var(--mid); font-style: italic; font-size: 18px; }
+
+    .post-tags-bar { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; }
+    .kw-tag { padding: 4px 12px; border-radius: 20px; background: var(--cream); border: 1px solid var(--border); font-size: 12px; color: var(--mid); }
+
+    .related { max-width: 1100px; margin: 0 auto; padding: 0 32px 80px; }
+    .related h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 24px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .post-card { background: #fff; border-radius: var(--r); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+    .post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+    .post-card-img { aspect-ratio: 16/9; overflow: hidden; background: var(--pink); display: flex; align-items: center; justify-content: center; font-size: 36px; }
+    .post-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .post-card-body { padding: 16px; flex: 1; }
+    .post-card-body h3 { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+    .post-card-meta { font-size: 11px; color: var(--mid); }
+
+    .newsletter-bar { background: var(--lavender); border-radius: var(--r); padding: 40px; text-align: center; margin: 0 32px 80px; max-width: 1100px; margin-inline: auto; }
+    .newsletter-bar h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .newsletter-bar p { font-size: 14px; color: var(--mid); margin-bottom: 20px; }
+    .nl-form { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
+    .nl-form input { flex: 1; padding: 11px 16px; border: 1.5px solid var(--border); border-radius: 40px; font-family: var(--font); font-size: 14px; background: #fff; outline: none; }
+    .nl-form button { padding: 11px 20px; border-radius: 40px; border: none; background: var(--dark); color: #fff; font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .15s; }
+    .nl-form button:hover { background: var(--orange); }
+
+    footer { background: var(--dark); color: #fff; display: grid; grid-template-columns: 1fr auto auto; gap: 32px; padding: 48px 32px 24px; }
+    .footer-brand { font-size: 18px; font-weight: 800; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul a { font-size: 13px; color: rgba(255,255,255,0.7); transition: color .15s; }
+    .footer-col ul a:hover { color: #fff; }
+    .footer-bottom { grid-column: 1/-1; font-size: 12px; color: rgba(255,255,255,0.4); padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 16px; }
+
+    .not-found { text-align: center; padding: 120px 32px; }
+    .not-found .emoji { font-size: 64px; margin-bottom: 20px; }
+    .not-found h1 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+    .not-found p { color: var(--mid); margin-bottom: 28px; }
+    .btn { display: inline-block; padding: 12px 28px; border-radius: 40px; font-family: var(--font); font-size: 14px; font-weight: 700; background: var(--dark); color: #fff; transition: background .15s; }
+    .btn:hover { background: var(--orange); }
+
+    .skeleton { background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; border-radius: 8px; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    @media (max-width: 700px) {
+      .post-wrap { padding: 32px 16px 64px; }
+      .related-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-links">
+    <a href="/about.html">About</a>
+    <a href="/shop.html">Shop</a>
+  </div>
+  <a class="nav-logo" href="/"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" /></a>
+  <div style="width:80px"></div>
+</nav>
+
+<div id="postContent"></div>
+<div id="relatedContent"></div>
+
+<div class="newsletter-bar" style="margin: 0 32px 80px; max-width:740px; margin-inline:auto;">
+  <h3>Enjoyed this? Stay in the loop 🏓</h3>
+  <p>Get the latest tips, gear drops and community stories straight to your inbox.</p>
+  <div class="nl-form">
+    <input type="email" placeholder="your@email.com" aria-label="Email" />
+    <button type="button">Subscribe</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">atla + puffin</div>
+  <div class="footer-col">
+    <h4>Menu</h4>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/shop.html">Shop</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Shipping Info</a></li>
+      <li><a href="#">Community Events</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">© 2025 atla + puffin. All rights reserved.</div>
+</footer>
+
+<script>
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function formatDate(iso) {
+    if (!iso) return '';
+    return new Date(iso).toLocaleDateString('en-SG', { day:'numeric', month:'long', year:'numeric' });
+  }
+  function readTime(body) {
+    const words = (body||'').replace(/<[^>]*>/g,'').split(/\s+/).length;
+    return Math.max(1, Math.ceil(words/200)) + ' min read';
+  }
+
+  // Get slug from URL path: /blog/my-post-slug
+  const slug = location.pathname.replace('/blog/', '').replace(/\//g,'');
+
+  async function loadPost() {
+    const el = document.getElementById('postContent');
+
+    // Skeleton
+    el.innerHTML = `<div class="post-wrap">
+      <div class="skeleton" style="height:20px;width:120px;margin-bottom:32px"></div>
+      <div class="skeleton" style="height:52px;margin-bottom:12px"></div>
+      <div class="skeleton" style="height:52px;width:70%;margin-bottom:24px"></div>
+      <div class="skeleton" style="height:16px;width:200px;margin-bottom:40px"></div>
+      <div class="skeleton" style="aspect-ratio:16/7;margin-bottom:40px"></div>
+      <div class="skeleton" style="height:16px;margin-bottom:12px"></div>
+      <div class="skeleton" style="height:16px;margin-bottom:12px"></div>
+      <div class="skeleton" style="height:16px;width:80%;margin-bottom:12px"></div>
+    </div>`;
+
+    try {
+      const res = await fetch(`/api/posts/${slug}`);
+      if (!res.ok) throw new Error('not found');
+      const { post } = await res.json();
+
+      // ── Update all page-level SEO meta ──
+      const title = post.seo_title || post.title;
+      const desc = post.seo_desc || post.excerpt || '';
+      const img = post.cover_image || 'https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png';
+      const url = `https://atlapuffin.com/blog/${post.slug}`;
+
+      document.title = `${title} — atla + puffin`;
+
+      // Inject/update meta tags
+      setMeta('name', 'description', desc);
+      setMeta('property', 'og:title', title);
+      setMeta('property', 'og:description', desc);
+      setMeta('property', 'og:image', img);
+      setMeta('property', 'og:url', url);
+      setMeta('property', 'og:type', 'article');
+      setMeta('name', 'twitter:card', 'summary_large_image');
+      setMeta('name', 'twitter:title', title);
+      setMeta('name', 'twitter:description', desc);
+      setLink('canonical', url);
+
+      // JSON-LD structured data
+      const ld = document.createElement('script');
+      ld.type = 'application/ld+json';
+      ld.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": desc,
+        "image": img,
+        "url": url,
+        "datePublished": post.published_at,
+        "dateModified": post.updated_at,
+        "author": { "@type": "Organization", "name": "atla + puffin" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "atla + puffin",
+          "logo": { "@type": "ImageObject", "url": "https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" }
+        },
+        "keywords": post.seo_keywords || '',
+        "mainEntityOfPage": { "@type": "WebPage", "@id": url }
+      });
+      document.head.appendChild(ld);
+
+      // Keywords display
+      const keywords = (post.seo_keywords || '').split(',').map(k=>k.trim()).filter(Boolean);
+      const kwHtml = keywords.length
+        ? `<div class="post-tags-bar">${keywords.map(k=>`<span class="kw-tag">#${esc(k)}</span>`).join('')}</div>`
+        : '';
+
+      // Hero image or emoji
+      const heroHtml = post.cover_image
+        ? `<div class="post-hero"><img src="${esc(post.cover_image)}" alt="${esc(post.title)}" /></div>`
+        : `<div class="post-hero">${post.emoji||'🏓'}</div>`;
+
+      el.innerHTML = `
+        <div class="post-wrap">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/blog">Blog</a> → <span>${esc(post.category||'Post')}</span>
+          </nav>
+          <span class="post-tag">${esc(post.category||'Blog')}</span>
+          <h1 class="post-title">${esc(post.title)}</h1>
+          <div class="post-meta">
+            <time datetime="${post.published_at}">${formatDate(post.published_at)}</time>
+            <span>·</span>
+            <span>${readTime(post.body)}</span>
+          </div>
+          ${heroHtml}
+          <div class="post-body">${post.body||''}</div>
+          ${kwHtml}
+        </div>`;
+
+      // Load related posts
+      loadRelated(post);
+
+    } catch {
+      el.innerHTML = `
+        <div class="not-found">
+          <div class="emoji">🏓</div>
+          <h1>Post not found</h1>
+          <p>This one must have gone out of bounds.</p>
+          <a class="btn" href="/blog">Back to blog</a>
+        </div>`;
+    }
+  }
+
+  async function loadRelated(currentPost) {
+    try {
+      const res = await fetch('/api/posts');
+      const { posts } = await res.json();
+      const related = posts
+        .filter(p => p.slug !== currentPost.slug)
+        .slice(0, 3);
+
+      if (!related.length) return;
+
+      document.getElementById('relatedContent').innerHTML = `
+        <div class="related">
+          <h2>More from the blog</h2>
+          <div class="related-grid">
+            ${related.map(p => `
+              <a href="/blog/${esc(p.slug)}" style="display:flex;text-decoration:none">
+                <article class="post-card">
+                  <div class="post-card-img">
+                    ${p.cover_image ? `<img src="${esc(p.cover_image)}" alt="${esc(p.title)}" loading="lazy" />` : p.emoji||'🏓'}
+                  </div>
+                  <div class="post-card-body">
+                    <h3>${esc(p.title)}</h3>
+                    <div class="post-card-meta">${formatDate(p.published_at)}</div>
+                  </div>
+                </article>
+              </a>`).join('')}
+          </div>
+        </div>`;
+    } catch {}
+  }
+
+  function setMeta(attr, name, content) {
+    let el = document.querySelector(`meta[${attr}="${name}"]`);
+    if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+    el.setAttribute('content', content);
+  }
+
+  function setLink(rel, href) {
+    let el = document.querySelector(`link[rel="${rel}"]`);
+    if (!el) { el = document.createElement('link'); el.setAttribute('rel', rel); document.head.appendChild(el); }
+    el.setAttribute('href', href);
+  }
+
+  loadPost();
+</script>
+</body>
+</html>

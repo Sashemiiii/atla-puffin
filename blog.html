@@ -7,293 +7,104 @@
   <meta name="description" content="Pickleball tips, gear guides, community stories and more from atla + puffin — Singapore's most playful sporting goods brand." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Blog — atla + puffin" />
-  <meta property="og:description" content="Pickleball tips, gear guides, community stories and more from atla + puffin." />
+  <meta property="og:description" content="Pickleball tips, gear guides and community stories from atla + puffin." />
   <meta property="og:image" content="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://atlapuffin.com/blog.html" />
+  <link rel="canonical" href="https://atlapuffin.com/blog" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Structured data: Blog -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": "atla + puffin Blog",
     "description": "Pickleball tips, gear guides and community stories from Singapore's most playful sporting goods brand.",
-    "url": "https://atlapuffin.com/blog.html",
+    "url": "https://atlapuffin.com/blog",
     "publisher": {
       "@type": "Organization",
       "name": "atla + puffin",
       "url": "https://atlapuffin.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png"
-      }
+      "logo": { "@type": "ImageObject", "url": "https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" }
     }
   }
   </script>
-
   <style>
     :root {
       --font: 'Inter', sans-serif;
-      --orange: #FF5C00;
-      --pink: #FFE8E0;
-      --lavender: #EAE5F5;
-      --cream: #FFF9F5;
-      --dark: #111;
-      --mid: #666;
-      --border: #E8E2DC;
-      --r: 12px;
+      --orange: #FF5C00; --pink: #FFE8E0; --lavender: #EAE5F5;
+      --cream: #FFF9F5; --dark: #111; --mid: #666; --border: #E8E2DC; --r: 12px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-family: var(--font); color: var(--dark); background: var(--cream); -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
 
-    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255,249,245,0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      height: 56px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 32px;
+      background: rgba(255,249,245,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border); height: 56px;
+      display: flex; align-items: center; justify-content: space-between; padding: 0 32px;
     }
     .nav-links { display: flex; gap: 24px; width: 80px; }
     .nav-links a { font-size: 13px; font-weight: 600; color: var(--mid); transition: color .15s; }
     .nav-links a:hover, .nav-links a.active { color: var(--dark); }
-    .nav-logo img { height: 28px; width: auto; }
-    .nav-right { width: 80px; display: flex; justify-content: flex-end; }
+    .nav-logo img { height: 28px; }
 
-    /* HERO */
-    .blog-hero {
-      background: var(--orange);
-      padding: 64px 32px 56px;
-      text-align: center;
-    }
-    .blog-hero-eyebrow {
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.15em; color: rgba(255,255,255,0.7); margin-bottom: 12px;
-    }
-    .blog-hero h1 {
-      font-size: clamp(36px, 6vw, 64px); font-weight: 900;
-      letter-spacing: -0.04em; color: #fff; line-height: 1;
-      margin-bottom: 14px;
-    }
-    .blog-hero p {
-      font-size: 16px; color: rgba(255,255,255,0.85);
-      max-width: 420px; margin: 0 auto; line-height: 1.55;
-    }
+    .blog-hero { background: var(--orange); padding: 64px 32px 56px; text-align: center; }
+    .blog-hero-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+    .blog-hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; letter-spacing: -0.04em; color: #fff; line-height: 1; margin-bottom: 14px; }
+    .blog-hero p { font-size: 16px; color: rgba(255,255,255,0.85); max-width: 420px; margin: 0 auto; line-height: 1.55; }
 
-    /* CATEGORY FILTER */
-    .filter-bar {
-      border-bottom: 1px solid var(--border);
-      background: #fff;
-      position: sticky; top: 56px; z-index: 90;
-    }
-    .filter-inner {
-      display: flex; gap: 0; overflow-x: auto;
-      max-width: 1100px; margin: 0 auto; padding: 0 32px;
-      scrollbar-width: none;
-    }
+    .filter-bar { border-bottom: 1px solid var(--border); background: #fff; position: sticky; top: 56px; z-index: 90; }
+    .filter-inner { display: flex; max-width: 1100px; margin: 0 auto; padding: 0 32px; overflow-x: auto; scrollbar-width: none; }
     .filter-inner::-webkit-scrollbar { display: none; }
-    .cat-btn {
-      flex-shrink: 0;
-      padding: 14px 20px; border: none; background: none;
-      font-family: var(--font); font-size: 13px; font-weight: 600;
-      color: var(--mid); cursor: pointer; border-bottom: 2px solid transparent;
-      transition: all .15s; white-space: nowrap;
-    }
+    .cat-btn { flex-shrink: 0; padding: 14px 20px; border: none; background: none; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--mid); cursor: pointer; border-bottom: 2px solid transparent; transition: all .15s; white-space: nowrap; }
     .cat-btn:hover { color: var(--dark); }
     .cat-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
 
-    /* CONTENT AREA */
-    .blog-main {
-      max-width: 1100px; margin: 0 auto; padding: 48px 32px 80px;
-    }
+    .blog-main { max-width: 1100px; margin: 0 auto; padding: 48px 32px 80px; }
 
-    /* FEATURED POST */
-    .featured-post {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0; border-radius: var(--r); overflow: hidden;
-      background: #fff; border: 1px solid var(--border);
-      margin-bottom: 48px;
-      transition: transform .2s, box-shadow .2s;
-      cursor: pointer;
-    }
+    .featured-post { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--r); overflow: hidden; background: #fff; border: 1px solid var(--border); margin-bottom: 48px; transition: transform .2s, box-shadow .2s; }
     .featured-post:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-    .featured-img {
-      aspect-ratio: 4/3; overflow: hidden;
-      background: var(--pink);
-    }
+    .featured-img { aspect-ratio: 4/3; overflow: hidden; background: var(--pink); display: flex; align-items: center; justify-content: center; font-size: 80px; }
     .featured-img img { width: 100%; height: 100%; object-fit: cover; }
-    .featured-img-placeholder {
-      width: 100%; height: 100%; background: var(--pink);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 64px;
-    }
-    .featured-body {
-      padding: 40px 40px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .post-tag {
-      display: inline-block; background: var(--pink); color: var(--orange);
-      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
-      margin-bottom: 14px; width: fit-content;
-    }
-    .featured-body h2 {
-      font-size: clamp(22px, 3vw, 32px); font-weight: 800;
-      letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 14px;
-    }
-    .featured-body .excerpt {
-      font-size: 15px; color: var(--mid); line-height: 1.6;
-      margin-bottom: 24px; display: -webkit-box;
-      -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .post-meta {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 12px; color: var(--mid);
-    }
-    .post-meta-dot { opacity: 0.4; }
-    .read-more {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--orange); font-size: 13px; font-weight: 700;
-      margin-top: 16px; transition: gap .15s;
-    }
+    .featured-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+    .post-tag { display: inline-block; background: var(--pink); color: var(--orange); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 14px; width: fit-content; }
+    .featured-body h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 14px; }
+    .featured-body .excerpt { font-size: 15px; color: var(--mid); line-height: 1.6; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-meta { font-size: 12px; color: var(--mid); display: flex; gap: 8px; }
+    .read-more { display: inline-flex; align-items: center; gap: 6px; color: var(--orange); font-size: 13px; font-weight: 700; margin-top: 16px; transition: gap .15s; }
     .read-more:hover { gap: 10px; }
 
-    /* GRID */
-    .posts-section-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--mid);
-      margin-bottom: 20px; padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-    .posts-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .post-card {
-      background: #fff; border-radius: var(--r);
-      border: 1px solid var(--border); overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: transform .2s, box-shadow .2s; cursor: pointer;
-    }
+    .posts-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .post-card { background: #fff; border-radius: var(--r); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
     .post-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-    .post-card-img {
-      aspect-ratio: 16/9; overflow: hidden; background: var(--pink);
-      display: flex; align-items: center; justify-content: center;
-    }
+    .post-card-img { aspect-ratio: 16/9; overflow: hidden; background: var(--pink); display: flex; align-items: center; justify-content: center; font-size: 40px; }
     .post-card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .post-card-emoji { font-size: 40px; }
     .post-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .post-card-body h3 {
-      font-size: 16px; font-weight: 800; letter-spacing: -0.02em;
-      line-height: 1.25; margin-bottom: 8px;
-    }
-    .post-card-body .excerpt {
-      font-size: 13px; color: var(--mid); line-height: 1.55;
-      display: -webkit-box; -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical; overflow: hidden;
-      flex: 1; margin-bottom: 14px;
-    }
-    .post-card-meta {
-      font-size: 11px; color: var(--mid);
-      display: flex; gap: 8px; align-items: center; margin-top: auto;
-    }
+    .post-card-body h3 { font-size: 16px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 8px; }
+    .post-card-body .excerpt { font-size: 13px; color: var(--mid); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; margin-bottom: 14px; }
+    .post-card-meta { font-size: 11px; color: var(--mid); display: flex; gap: 8px; }
 
-    /* SINGLE POST VIEW */
-    .post-view { display: none; }
-    .post-view.active { display: block; }
-    .blog-list { display: block; }
-    .blog-list.hidden { display: none; }
+    .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; border-radius: 8px; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-    .back-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 600; color: var(--mid);
-      cursor: pointer; margin-bottom: 32px;
-      border: none; background: none; font-family: var(--font);
-      padding: 0; transition: color .15s;
-    }
-    .back-btn:hover { color: var(--dark); }
-
-    .post-full-header { margin-bottom: 40px; }
-    .post-full-header h1 {
-      font-size: clamp(28px, 5vw, 52px); font-weight: 900;
-      letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 16px;
-    }
-    .post-full-meta {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 13px; color: var(--mid); flex-wrap: wrap;
-    }
-    .post-full-hero {
-      border-radius: var(--r); overflow: hidden;
-      aspect-ratio: 16/7; background: var(--pink);
-      margin-bottom: 40px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .post-full-hero img { width: 100%; height: 100%; object-fit: cover; }
-    .post-full-hero-emoji { font-size: 80px; }
-    .post-full-body {
-      max-width: 680px; margin: 0 auto;
-      font-size: 17px; line-height: 1.75; color: #222;
-    }
-    .post-full-body h2 {
-      font-size: 24px; font-weight: 800; letter-spacing: -0.03em;
-      margin: 40px 0 16px;
-    }
-    .post-full-body h3 {
-      font-size: 19px; font-weight: 700; margin: 32px 0 12px;
-    }
-    .post-full-body p { margin-bottom: 20px; }
-    .post-full-body ul, .post-full-body ol {
-      padding-left: 24px; margin-bottom: 20px;
-    }
-    .post-full-body li { margin-bottom: 8px; }
-    .post-full-body strong { font-weight: 700; }
-    .post-full-body em { font-style: italic; }
-    .post-full-body a { color: var(--orange); text-decoration: underline; }
-
-    /* EMPTY STATE */
-    .empty-state {
-      text-align: center; padding: 80px 32px;
-    }
+    .empty-state { text-align: center; padding: 80px 32px; }
     .empty-state .emoji { font-size: 56px; margin-bottom: 16px; }
     .empty-state h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
     .empty-state p { color: var(--mid); font-size: 15px; }
 
-    /* NEWSLETTER */
-    .newsletter-bar {
-      background: var(--lavender); border-radius: var(--r);
-      padding: 40px; text-align: center; margin-top: 64px;
-    }
+    .newsletter-bar { background: var(--lavender); border-radius: var(--r); padding: 40px; text-align: center; margin-top: 64px; }
     .newsletter-bar h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
     .newsletter-bar p { font-size: 14px; color: var(--mid); margin-bottom: 20px; }
-    .newsletter-form { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
-    .newsletter-form input {
-      flex: 1; padding: 11px 16px; border: 1.5px solid var(--border);
-      border-radius: 40px; font-family: var(--font); font-size: 14px;
-      background: #fff; outline: none;
-    }
-    .newsletter-form input:focus { border-color: var(--orange); }
-    .newsletter-form button {
-      padding: 11px 20px; border-radius: 40px; border: none;
-      background: var(--dark); color: #fff; font-family: var(--font);
-      font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
-      transition: background .15s;
-    }
-    .newsletter-form button:hover { background: var(--orange); }
+    .nl-form { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
+    .nl-form input { flex: 1; padding: 11px 16px; border: 1.5px solid var(--border); border-radius: 40px; font-family: var(--font); font-size: 14px; background: #fff; outline: none; }
+    .nl-form input:focus { border-color: var(--orange); }
+    .nl-form button { padding: 11px 20px; border-radius: 40px; border: none; background: var(--dark); color: #fff; font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .15s; }
+    .nl-form button:hover { background: var(--orange); }
 
-    /* FOOTER */
-    footer {
-      background: var(--dark); color: #fff;
-      display: grid; grid-template-columns: 1fr auto auto;
-      gap: 32px; padding: 48px 32px 24px;
-      align-items: start;
-    }
+    footer { background: var(--dark); color: #fff; display: grid; grid-template-columns: 1fr auto auto; gap: 32px; padding: 48px 32px 24px; align-items: start; }
     .footer-brand { font-size: 18px; font-weight: 800; letter-spacing: -0.03em; }
     .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
     .footer-col ul { list-style: none; }
@@ -307,8 +118,7 @@
 
     @media (max-width: 900px) {
       .featured-post { grid-template-columns: 1fr; }
-      .featured-img { aspect-ratio: 16/9; }
-      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+      .posts-grid { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 600px) {
       nav { padding: 0 16px; }
@@ -316,36 +126,31 @@
       .posts-grid { grid-template-columns: 1fr; }
       .featured-body { padding: 24px; }
       footer { grid-template-columns: 1fr 1fr; }
-      .newsletter-form { flex-direction: column; }
+      .nl-form { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-links">
-    <a href="about.html">About</a>
-    <a href="shop.html">Shop</a>
+    <a href="/about.html">About</a>
+    <a href="/shop.html">Shop</a>
   </div>
-  <a class="nav-logo" href="index.html">
-    <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" />
-  </a>
-  <div class="nav-right"></div>
+  <a class="nav-logo" href="/"><img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" /></a>
+  <div style="width:80px"></div>
 </nav>
 
-<!-- HERO -->
 <section class="blog-hero">
   <p class="blog-hero-eyebrow">From the court, with love</p>
   <h1>The atla + puffin Blog</h1>
   <p>Tips, gear guides, community stories and the occasional chaos from Singapore's most seriously unserious pickleball brand.</p>
 </section>
 
-<!-- CATEGORY FILTER -->
 <div class="filter-bar">
-  <div class="filter-inner" id="catFilter">
+  <div class="filter-inner">
     <button class="cat-btn active" data-cat="all">All posts</button>
-    <button class="cat-btn" data-cat="Tips & Guides">Tips & Guides</button>
+    <button class="cat-btn" data-cat="Tips &amp; Guides">Tips &amp; Guides</button>
     <button class="cat-btn" data-cat="Gear">Gear</button>
     <button class="cat-btn" data-cat="Community">Community</button>
     <button class="cat-btn" data-cat="News">News</button>
@@ -353,59 +158,35 @@
   </div>
 </div>
 
-<!-- MAIN -->
-<main class="blog-main" id="blogMain">
-
-  <!-- BLOG LIST VIEW -->
-  <div class="blog-list" id="blogList">
-    <div id="featuredWrap"></div>
-    <p class="posts-section-label" id="gridLabel" style="display:none">More posts</p>
-    <div class="posts-grid" id="postsGrid"></div>
-    <div class="empty-state" id="emptyState" style="display:none">
-      <div class="emoji">🏓</div>
-      <h3>Nothing here yet</h3>
-      <p>Check back soon — we're warming up.</p>
-    </div>
-
-    <!-- NEWSLETTER -->
-    <div class="newsletter-bar">
-      <h3>Stay in the loop 🏓</h3>
-      <p>Get the latest tips, gear drops and community news — no spam, just good stuff.</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="your@email.com" aria-label="Email address" />
-        <button type="button">Subscribe</button>
-      </div>
-    </div>
+<main class="blog-main">
+  <div id="featuredWrap"></div>
+  <p class="posts-section-label" id="gridLabel" style="display:none">More posts</p>
+  <div class="posts-grid" id="postsGrid"></div>
+  <div class="empty-state" id="emptyState" style="display:none">
+    <div class="emoji">🏓</div>
+    <h3>Nothing here yet</h3>
+    <p>Check back soon — we're warming up.</p>
   </div>
 
-  <!-- SINGLE POST VIEW -->
-  <div class="post-view" id="postView">
-    <button class="back-btn" id="backBtn" onclick="showList()">
-      ← Back to blog
-    </button>
-    <article id="postContent"></article>
-    <div class="newsletter-bar" style="margin-top:64px">
-      <h3>Enjoyed this? Stay in the loop 🏓</h3>
-      <p>Get the latest tips, gear drops and community stories straight to your inbox.</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="your@email.com" aria-label="Email address" />
-        <button type="button">Subscribe</button>
-      </div>
+  <div class="newsletter-bar">
+    <h3>Stay in the loop 🏓</h3>
+    <p>Get the latest tips, gear drops and community news — no spam, just good stuff.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="your@email.com" aria-label="Email" />
+      <button type="button">Subscribe</button>
     </div>
   </div>
-
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">atla + puffin</div>
   <div class="footer-col">
     <h4>Menu</h4>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/shop.html">Shop</a></li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/blog">Blog</a></li>
     </ul>
   </div>
   <div class="footer-col">
@@ -417,234 +198,108 @@
     </ul>
     <h4 style="margin-top:20px">Follow us</h4>
     <div class="footer-socials">
-      <a href="#" aria-label="TikTok">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.53V6.77a4.85 4.85 0 01-1-.08z"/></svg>
-      </a>
-      <a href="#" aria-label="Instagram">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </a>
+      <a href="#" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.53V6.77a4.85 4.85 0 01-1-.08z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
     </div>
   </div>
   <div class="footer-bottom">© 2025 atla + puffin. All rights reserved.</div>
 </footer>
 
 <script>
-  // ─── STORAGE ──────────────────────────────────────────
-  const STORAGE_KEY = 'atlapuffin_posts';
-
-  async function getPosts() {
-    try {
-      const r = await window.storage.get(STORAGE_KEY, true); // shared=true
-      return r ? JSON.parse(r.value) : [];
-    } catch { return []; }
-  }
-
-  // ─── RENDER ───────────────────────────────────────────
   let allPosts = [];
   let activeCategory = 'all';
 
   function formatDate(iso) {
     if (!iso) return '';
-    const d = new Date(iso);
-    return d.toLocaleDateString('en-SG', { day: 'numeric', month: 'long', year: 'numeric' });
+    return new Date(iso).toLocaleDateString('en-SG', { day:'numeric', month:'long', year:'numeric' });
   }
-
   function readTime(body) {
-    const words = (body || '').replace(/<[^>]*>/g, '').split(/\s+/).length;
-    return Math.max(1, Math.ceil(words / 200)) + ' min read';
+    const words = (body||'').replace(/<[^>]*>/g,'').split(/\s+/).length;
+    return Math.max(1, Math.ceil(words/200)) + ' min read';
   }
+  function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-  function imgOrEmoji(post) {
-    if (post.coverImage) {
-      return `<img src="${post.coverImage}" alt="${escHtml(post.title)}" loading="lazy" />`;
-    }
-    return `<div class="${arguments[1] || 'post-card-emoji'}">${post.emoji || '🏓'}</div>`;
-  }
-
-  function escHtml(s) {
-    return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
-  function renderList(posts) {
-    const featured = posts[0];
-    const rest = posts.slice(1);
-
+  function render(posts) {
     const featWrap = document.getElementById('featuredWrap');
     const grid = document.getElementById('postsGrid');
     const gridLabel = document.getElementById('gridLabel');
     const empty = document.getElementById('emptyState');
 
     if (!posts.length) {
-      featWrap.innerHTML = '';
-      grid.innerHTML = '';
-      gridLabel.style.display = 'none';
-      empty.style.display = 'block';
-      return;
+      featWrap.innerHTML = ''; grid.innerHTML = '';
+      gridLabel.style.display = 'none'; empty.style.display = 'block'; return;
     }
     empty.style.display = 'none';
 
-    // Featured
-    if (featured) {
-      const imgHtml = featured.coverImage
-        ? `<img src="${featured.coverImage}" alt="${escHtml(featured.title)}" loading="eager" />`
-        : `<div class="featured-img-placeholder">${featured.emoji || '🏓'}</div>`;
+    const [featured, ...rest] = posts;
 
-      featWrap.innerHTML = `
-        <article class="featured-post" onclick="openPost('${featured.id}')" role="article"
-          itemscope itemtype="https://schema.org/BlogPosting">
-          <div class="featured-img">${imgHtml}</div>
+    featWrap.innerHTML = `
+      <a href="/blog/${esc(featured.slug)}" style="display:block;text-decoration:none">
+        <article class="featured-post" itemscope itemtype="https://schema.org/BlogPosting">
+          <div class="featured-img">
+            ${featured.cover_image
+              ? `<img src="${esc(featured.cover_image)}" alt="${esc(featured.title)}" loading="eager" itemprop="image" />`
+              : featured.emoji || '🏓'}
+          </div>
           <div class="featured-body">
-            <span class="post-tag">${escHtml(featured.category || 'Blog')}</span>
-            <h2 itemprop="headline">${escHtml(featured.title)}</h2>
-            <p class="excerpt" itemprop="description">${escHtml(featured.excerpt || '')}</p>
+            <span class="post-tag">${esc(featured.category||'Blog')}</span>
+            <h2 itemprop="headline">${esc(featured.title)}</h2>
+            <p class="excerpt" itemprop="description">${esc(featured.excerpt||'')}</p>
             <div class="post-meta">
-              <span itemprop="datePublished" content="${featured.publishedAt}">${formatDate(featured.publishedAt)}</span>
-              <span class="post-meta-dot">·</span>
-              <span>${readTime(featured.body)}</span>
+              <time itemprop="datePublished" datetime="${featured.published_at}">${formatDate(featured.published_at)}</time>
+              <span>·</span><span>${readTime(featured.body)}</span>
             </div>
             <span class="read-more">Read post →</span>
           </div>
-        </article>`;
-    } else {
-      featWrap.innerHTML = '';
-    }
+        </article>
+      </a>`;
 
-    // Rest grid
     if (rest.length) {
       gridLabel.style.display = 'block';
       grid.innerHTML = rest.map(p => `
-        <article class="post-card" onclick="openPost('${p.id}')" role="article"
-          itemscope itemtype="https://schema.org/BlogPosting">
-          <div class="post-card-img">
-            ${p.coverImage
-              ? `<img src="${p.coverImage}" alt="${escHtml(p.title)}" loading="lazy" />`
-              : `<span class="post-card-emoji">${p.emoji || '🏓'}</span>`
-            }
-          </div>
-          <div class="post-card-body">
-            <span class="post-tag">${escHtml(p.category || 'Blog')}</span>
-            <h3 itemprop="headline">${escHtml(p.title)}</h3>
-            <p class="excerpt" itemprop="description">${escHtml(p.excerpt || '')}</p>
-            <div class="post-card-meta">
-              <span itemprop="datePublished" content="${p.publishedAt}">${formatDate(p.publishedAt)}</span>
-              <span>·</span>
-              <span>${readTime(p.body)}</span>
+        <a href="/blog/${esc(p.slug)}" style="display:flex;text-decoration:none">
+          <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+            <div class="post-card-img">
+              ${p.cover_image
+                ? `<img src="${esc(p.cover_image)}" alt="${esc(p.title)}" loading="lazy" itemprop="image" />`
+                : p.emoji || '🏓'}
             </div>
-          </div>
-        </article>`).join('');
+            <div class="post-card-body">
+              <span class="post-tag">${esc(p.category||'Blog')}</span>
+              <h3 itemprop="headline">${esc(p.title)}</h3>
+              <p class="excerpt" itemprop="description">${esc(p.excerpt||'')}</p>
+              <div class="post-card-meta">
+                <time itemprop="datePublished" datetime="${p.published_at}">${formatDate(p.published_at)}</time>
+                <span>·</span><span>${readTime(p.body)}</span>
+              </div>
+            </div>
+          </article>
+        </a>`).join('');
     } else {
-      gridLabel.style.display = 'none';
-      grid.innerHTML = '';
+      gridLabel.style.display = 'none'; grid.innerHTML = '';
     }
-
-    // Inject JSON-LD per article for SEO
-    updateSchemaLD(posts);
   }
 
-  function updateSchemaLD(posts) {
-    document.querySelectorAll('.blog-post-ld').forEach(e => e.remove());
-    posts.forEach(p => {
-      const s = document.createElement('script');
-      s.type = 'application/ld+json';
-      s.className = 'blog-post-ld';
-      s.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": p.title,
-        "description": p.excerpt || '',
-        "datePublished": p.publishedAt,
-        "url": `https://atlapuffin.com/blog.html#post-${p.id}`,
-        "image": p.coverImage || '',
-        "author": { "@type": "Organization", "name": "atla + puffin" },
-        "publisher": {
-          "@type": "Organization",
-          "name": "atla + puffin",
-          "logo": { "@type": "ImageObject", "url": "https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" }
-        }
-      });
-      document.head.appendChild(s);
-    });
-  }
-
-  // ─── SINGLE POST ──────────────────────────────────────
-  function openPost(id) {
-    const post = allPosts.find(p => p.id === id);
-    if (!post) return;
-
-    // Update page title + meta for SEO
-    document.title = `${post.title} — atla + puffin Blog`;
-    document.querySelector('meta[name="description"]').setAttribute('content', post.excerpt || post.title);
-    history.pushState({ postId: id }, '', `#post-${id}`);
-
-    const heroHtml = post.coverImage
-      ? `<img src="${post.coverImage}" alt="${escHtml(post.title)}" />`
-      : `<div class="post-full-hero-emoji">${post.emoji || '🏓'}</div>`;
-
-    document.getElementById('postContent').innerHTML = `
-      <header class="post-full-header">
-        <span class="post-tag">${escHtml(post.category || 'Blog')}</span>
-        <h1>${escHtml(post.title)}</h1>
-        <div class="post-full-meta">
-          <span>${formatDate(post.publishedAt)}</span>
-          <span>·</span>
-          <span>${readTime(post.body)}</span>
-          ${post.seoKeywords ? `<span>·</span><span style="color:var(--orange);font-size:11px;font-weight:600">
-            ${post.seoKeywords.split(',').slice(0,3).map(k=>`#${k.trim()}`).join(' ')}</span>` : ''}
-        </div>
-      </header>
-      <div class="post-full-hero">${heroHtml}</div>
-      <div class="post-full-body">${post.body || ''}</div>
-    `;
-
-    document.getElementById('blogList').classList.add('hidden');
-    document.getElementById('postView').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function showList() {
-    document.title = 'Blog — atla + puffin';
-    document.querySelector('meta[name="description"]').setAttribute('content', 'Pickleball tips, gear guides, community stories and more from atla + puffin.');
-    history.pushState({}, '', location.pathname);
-    document.getElementById('blogList').classList.remove('hidden');
-    document.getElementById('postView').classList.remove('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Handle browser back
-  window.addEventListener('popstate', e => {
-    if (e.state?.postId) openPost(e.state.postId);
-    else showList();
-  });
-
-  // ─── CATEGORY FILTER ─────────────────────────────────
   document.querySelectorAll('.cat-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       activeCategory = btn.dataset.cat;
-      const filtered = activeCategory === 'all'
-        ? allPosts
-        : allPosts.filter(p => p.category === activeCategory);
-      renderList(filtered);
+      render(activeCategory === 'all' ? allPosts : allPosts.filter(p => p.category === activeCategory));
     });
   });
 
-  // ─── INIT ─────────────────────────────────────────────
   async function init() {
-    allPosts = (await getPosts()).filter(p => p.status === 'published');
-    allPosts.sort((a,b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-    renderList(allPosts);
+    // Show skeleton while loading
+    document.getElementById('featuredWrap').innerHTML = `<div class="skeleton" style="height:320px;border-radius:12px;margin-bottom:48px"></div>`;
 
-    // Handle direct #post-xxx URL
-    const hash = location.hash;
-    if (hash.startsWith('#post-')) {
-      const id = hash.replace('#post-', '');
-      openPost(id);
-    }
+    const res = await fetch('/api/posts');
+    const data = await res.json();
+    allPosts = data.posts || [];
+    render(allPosts);
   }
 
   init();
 </script>
-
 </body>
 </html>
