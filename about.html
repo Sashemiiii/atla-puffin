@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — atla + puffin</title>
+  <meta name="description" content="atla + puffin is Singapore's most playful pickleball brand. Norwegian-inspired design, built for everyone. Utstyr for alle." />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ─── About Hero ─────────────────────────────────────── */
     .about-hero {
       background: var(--orange);
       padding: 72px 0 0;
@@ -21,143 +21,93 @@
       margin: 0 auto;
       padding: 0 32px;
     }
-    .about-hero-text {
-      padding-bottom: 60px;
-    }
+    .about-hero-text { padding-bottom: 60px; }
     .about-hero-eyebrow {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 16px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: rgba(255,255,255,0.7); margin-bottom: 16px;
     }
     .about-hero-text h1 {
-      font-size: clamp(36px, 6vw, 64px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      color: #fff;
-      line-height: 1.0;
-      margin-bottom: 24px;
+      font-size: clamp(36px, 6vw, 64px); font-weight: 800;
+      letter-spacing: -0.04em; color: #fff; line-height: 1.0; margin-bottom: 16px;
+    }
+    .about-hero-slogan {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.2em; color: rgba(255,255,255,0.6); margin-bottom: 20px;
     }
     .about-hero-text p {
-      font-size: 16px;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.6;
-      max-width: 380px;
+      font-size: 16px; color: rgba(255,255,255,0.88);
+      line-height: 1.6; max-width: 380px;
     }
     .about-hero-imgs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      align-items: end;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; align-items: end;
     }
     .about-hero-imgs img {
-      width: 100%;
-      border-radius: 8px 8px 0 0;
-      object-fit: cover;
-      aspect-ratio: 3/4;
+      width: 100%; border-radius: 8px 8px 0 0;
+      object-fit: cover; aspect-ratio: 3/4;
     }
-    .about-hero-imgs img:first-child {
-      margin-top: 40px;
-    }
+    .about-hero-imgs img:first-child { margin-top: 40px; }
 
-    /* ─── Brand Story ─────────────────────────────────────── */
-    .brand-story {
-      padding: 80px 0;
-    }
+    .brand-story { padding: 80px 0; }
     .brand-story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
     }
     .brand-story h2 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin-bottom: 24px;
-      line-height: 1.05;
+      font-size: clamp(28px, 4vw, 44px); font-weight: 800;
+      letter-spacing: -0.04em; margin-bottom: 24px; line-height: 1.05;
     }
     .brand-story p {
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--mid);
-      margin-bottom: 16px;
+      font-size: 15px; line-height: 1.7;
+      color: var(--mid); margin-bottom: 16px;
     }
     .brand-story-img {
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 4/5;
+      border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;
     }
-    .brand-story-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .brand-story-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Norwegian detail strip */
+    .norway-strip {
+      background: var(--dark); padding: 48px 32px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 64px; flex-wrap: wrap;
+    }
+    .norway-item { text-align: center; }
+    .norway-item .word {
+      font-size: 28px; font-weight: 900; letter-spacing: -0.03em;
+      color: #fff; margin-bottom: 6px;
+    }
+    .norway-item .translation {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; color: rgba(255,255,255,0.4);
     }
 
-    /* ─── Values ──────────────────────────────────────────── */
-    .values {
-      background: var(--pink);
-      padding: 72px 0;
-    }
+    .values { background: var(--pink); padding: 72px 0; }
     .values h2 {
-      font-size: 36px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin-bottom: 48px;
-      text-align: center;
+      font-size: 36px; font-weight: 800; letter-spacing: -0.04em;
+      margin-bottom: 48px; text-align: center;
     }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .value-item {
-      background: #fff;
-      border-radius: 12px;
-      padding: 32px 28px;
-    }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .value-item { background: #fff; border-radius: 12px; padding: 32px 28px; }
     .value-num {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--orange);
-      text-transform: uppercase;
-      margin-bottom: 12px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--orange); text-transform: uppercase; margin-bottom: 12px;
     }
-    .value-item h3 {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 10px;
-    }
-    .value-item p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--mid);
-    }
+    .value-item h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 10px; }
+    .value-item p { font-size: 14px; line-height: 1.6; color: var(--mid); }
 
-    /* ─── CTA ─────────────────────────────────────────────── */
-    .about-cta {
-      background: var(--lavender);
-      padding: 80px 32px;
-      text-align: center;
-    }
+    .about-cta { background: var(--lavender); padding: 80px 32px; text-align: center; }
     .about-cta h2 {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin-bottom: 16px;
-      line-height: 1.05;
+      font-size: clamp(32px, 5vw, 56px); font-weight: 800;
+      letter-spacing: -0.04em; margin-bottom: 16px; line-height: 1.05;
+    }
+    .about-cta .slogan {
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.2em; color: var(--orange); margin-bottom: 16px;
     }
     .about-cta p {
-      font-size: 16px;
-      color: var(--mid);
-      margin-bottom: 32px;
-      max-width: 380px;
-      margin-inline: auto;
-      line-height: 1.5;
+      font-size: 16px; color: var(--mid); margin-bottom: 32px;
+      max-width: 380px; margin-inline: auto; line-height: 1.5;
     }
 
     @media (max-width: 800px) {
@@ -165,12 +115,12 @@
       .about-hero-imgs { margin-top: 40px; }
       .brand-story-grid { grid-template-columns: 1fr; gap: 40px; }
       .values-grid { grid-template-columns: 1fr; }
+      .norway-strip { gap: 32px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-links">
     <a href="/about" class="active">About</a>
@@ -184,13 +134,14 @@
 
 <div class="page-wrap">
 
-  <!-- ABOUT HERO -->
+  <!-- HERO -->
   <section class="about-hero">
     <div class="about-hero-inner">
       <div class="about-hero-text">
-        <p class="about-hero-eyebrow">Behind the brand</p>
-        <h1>We make fun mandatory.</h1>
-        <p>Founded in Singapore, the little red dot, atla + puffin makes sporting gear that's the opposite of what brands are going for today. Fun.</p>
+        <p class="about-hero-eyebrow">Utstyr for alle</p>
+        <h1>Gear for everyone.</h1>
+        <p class="about-hero-slogan">Good sport shouldn't cost a fortune — or look like it did.</p>
+        <p>Functional. Affordable. Scandinavian-inspired design that stands out on any court.</p>
       </div>
       <div class="about-hero-imgs">
         <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Toot.jpg" alt="Toot paddle" />
@@ -204,15 +155,43 @@
     <div class="container">
       <div class="brand-story-grid">
         <div>
-          <h2>Behind the brand</h2>
-          <p>In a world of ultra-performance and intense branding, we create playful, functional gear that brings fun back into movement. We make sporting goods for people who don't take themselves too seriously.</p>
-          <p>Whether you're running a marathon, missing every badminton shot, or just stretching dramatically in the park — atla + puffin brings you sport essentials with just a little bit of personality, humour and even chaos.</p>
-          <p>We're built for the community, not the podium. Come for the paddles, stay for the vibes.</p>
+          <h2>Good sport shouldn't cost a fortune.</h2>
+          <p>We built atla + puffin on a simple idea: great gear should be accessible to everyone. Not just the serious players. Not just the people with premium budgets. Everyone.</p>
+          <p>The design draws from Scandinavia — clean, functional, honest. Names like Snø, Fjord and Sitron. Paddles with personality. Bags that actually look good. Gear that stands out on any court without standing on anyone's wallet.</p>
+          <p>Right now, we're all in on pickleball. Paddles, bags, sets — everything you need to get on court. More sports coming soon. Play more. Look good doing it.</p>
         </div>
         <div class="brand-story-img">
           <img src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/Dobbelten.jpg" alt="atla + puffin gear" />
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- NORWEGIAN WORDS STRIP -->
+  <section class="norway-strip">
+    <div class="norway-item">
+      <div class="word">Snø</div>
+      <div class="translation">Snow</div>
+    </div>
+    <div class="norway-item">
+      <div class="word">Fjord</div>
+      <div class="translation">Fjord</div>
+    </div>
+    <div class="norway-item">
+      <div class="word">Sitron</div>
+      <div class="translation">Lemon</div>
+    </div>
+    <div class="norway-item">
+      <div class="word">Blomst</div>
+      <div class="translation">Flower</div>
+    </div>
+    <div class="norway-item">
+      <div class="word">Kull</div>
+      <div class="translation">Coal</div>
+    </div>
+    <div class="norway-item">
+      <div class="word">Lavendel</div>
+      <div class="translation">Lavender</div>
     </div>
   </section>
 
@@ -223,18 +202,18 @@
       <div class="values-grid">
         <div class="value-item">
           <p class="value-num">01</p>
-          <h3>Playful by design</h3>
-          <p>Every product we make should put a smile on your face before you even pick it up. Googly eyes are a feature, not a bug.</p>
+          <h3>Scandinavian-inspired design</h3>
+          <p>Clean shapes, honest materials, names rooted in Nordic simplicity. Gear that looks considered without taking itself too seriously.</p>
         </div>
         <div class="value-item">
           <p class="value-num">02</p>
-          <h3>Accessible first</h3>
-          <p>Great gear shouldn't cost a month's rent. We keep prices honest so more people can play, more often.</p>
+          <h3>Affordable for all</h3>
+          <p>Good sport shouldn't cost a fortune. We keep prices honest so the sport stays open — community court or condo carpark, you're welcome here.</p>
         </div>
         <div class="value-item">
           <p class="value-num">03</p>
-          <h3>Community over clout</h3>
-          <p>We're built for park games and community courts, not brand deals and highlight reels. Your game, your rules.</p>
+          <h3>Built for the court</h3>
+          <p>Functional first. Every paddle, bag and accessory is made to actually perform — so you can focus on the game, not your gear.</p>
         </div>
       </div>
     </div>
@@ -242,14 +221,14 @@
 
   <!-- CTA -->
   <section class="about-cta">
-    <h2>Ready to play?</h2>
-    <p>Pick your paddle, grab a bag, and bring the chaos to your next game.</p>
+    <p class="slogan">Utstyr for alle</p>
+    <h2>Play more. Look good doing it.</h2>
+    <p>Paddles, bags, sets — everything you need to get on court. More sports coming soon.</p>
     <a href="/shop" class="btn btn-dark">Shop the collection</a>
   </section>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">atla + puffin</div>
   <div class="footer-col">
