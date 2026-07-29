@@ -10,411 +10,219 @@
   <style>
     :root {
       --font: 'Inter', sans-serif;
-      --orange: #FF5C00;
-      --pink: #FFE8E0;
-      --lavender: #EAE5F5;
-      --cream: #FFF9F5;
-      --dark: #111;
-      --mid: #666;
-      --border: #E8E2DC;
-      --r: 10px;
+      --orange: #FF5C00; --pink: #FFE8E0; --lavender: #EAE5F5;
+      --cream: #FFF9F5; --dark: #111; --mid: #666; --border: #E8E2DC; --r: 10px;
       --sidebar: 260px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-family: var(--font); color: var(--dark); background: var(--cream); -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
     button { cursor: pointer; font-family: var(--font); }
 
-    /* ─── LOGIN SCREEN ─── */
-    .login-screen {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      background: var(--dark);
-    }
-    .login-box {
-      background: #fff; border-radius: 16px; padding: 48px 40px;
-      width: 100%; max-width: 380px; text-align: center;
-    }
+    /* LOGIN */
+    .login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--dark); }
+    .login-box { background: #fff; border-radius: 16px; padding: 48px 40px; width: 100%; max-width: 380px; text-align: center; }
     .login-logo { height: 32px; margin: 0 auto 28px; filter: invert(1); }
     .login-box h1 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
     .login-box p { font-size: 13px; color: var(--mid); margin-bottom: 28px; }
     .login-field { margin-bottom: 12px; text-align: left; }
     .login-field label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); display: block; margin-bottom: 6px; }
-    .login-field input {
-      width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
-      border-radius: 8px; font-family: var(--font); font-size: 14px;
-      outline: none; transition: border-color .15s;
-    }
+    .login-field input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--font); font-size: 14px; outline: none; transition: border-color .15s; }
     .login-field input:focus { border-color: var(--orange); }
-    .login-btn {
-      width: 100%; padding: 13px; border-radius: 8px; border: none;
-      background: var(--dark); color: #fff; font-size: 14px; font-weight: 700;
-      margin-top: 8px; transition: background .15s;
-    }
+    .login-btn { width: 100%; padding: 13px; border-radius: 8px; border: none; background: var(--dark); color: #fff; font-size: 14px; font-weight: 700; margin-top: 8px; transition: background .15s; }
     .login-btn:hover { background: var(--orange); }
     .login-error { color: #e53; font-size: 13px; margin-top: 10px; display: none; }
 
-    /* ─── APP SHELL ─── */
-    .app { display: none; min-height: 100vh; }
-    .app.active { display: flex; flex-direction: column; }
+    /* APP */
+    .app { display: none; min-height: 100vh; flex-direction: column; }
+    .app.active { display: flex; }
 
-    /* Top bar */
-    .topbar {
-      height: 52px; background: var(--dark); display: flex;
-      align-items: center; padding: 0 20px; gap: 16px;
-      position: sticky; top: 0; z-index: 200;
-    }
+    .topbar { height: 52px; background: var(--dark); display: flex; align-items: center; padding: 0 20px; gap: 16px; position: sticky; top: 0; z-index: 200; }
     .topbar-logo { height: 24px; filter: invert(1); }
-    .topbar-label {
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; color: rgba(255,255,255,0.45);
-      border-left: 1px solid rgba(255,255,255,0.15); padding-left: 16px;
-    }
+    .topbar-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); border-left: 1px solid rgba(255,255,255,0.15); padding-left: 16px; }
     .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
-    .topbar-logout {
-      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5);
-      border: none; background: none; transition: color .15s;
-    }
+    .topbar-logout { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); border: none; background: none; transition: color .15s; }
     .topbar-logout:hover { color: #fff; }
-    .topbar-view-blog {
-      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;
-      padding: 5px 12px; transition: all .15s;
-    }
+    .topbar-view-blog { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 5px 12px; transition: all .15s; }
     .topbar-view-blog:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
-    /* Body layout */
     .app-body { display: flex; flex: 1; min-height: 0; }
 
-    /* ─── SIDEBAR ─── */
-    .sidebar {
-      width: var(--sidebar); background: #fff; border-right: 1px solid var(--border);
-      display: flex; flex-direction: column; flex-shrink: 0;
-    }
+    /* SIDEBAR */
+    .sidebar { width: var(--sidebar); background: #fff; border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; }
     .sidebar-section { padding: 20px 16px 8px; }
-    .sidebar-section-label {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--mid); margin-bottom: 8px;
-    }
-    .new-post-btn {
-      width: 100%; padding: 10px 14px; border-radius: 8px; border: none;
-      background: var(--orange); color: #fff; font-size: 13px; font-weight: 700;
-      text-align: left; display: flex; align-items: center; gap: 8px;
-      transition: opacity .15s;
-    }
+    .sidebar-section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid); margin-bottom: 8px; }
+    .new-post-btn { width: 100%; padding: 10px 14px; border-radius: 8px; border: none; background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; text-align: left; display: flex; align-items: center; gap: 8px; transition: opacity .15s; }
     .new-post-btn:hover { opacity: 0.88; }
-    .new-post-btn span { font-size: 16px; }
-
-    /* Post list */
-    .posts-list { flex: 1; overflow-y: auto; padding: 8px 8px; }
-    .post-list-item {
-      padding: 10px 10px; border-radius: 8px; cursor: pointer;
-      transition: background .12s; border: 1.5px solid transparent;
-      margin-bottom: 4px;
-    }
+    .posts-list { flex: 1; overflow-y: auto; padding: 8px; }
+    .post-list-item { padding: 10px; border-radius: 8px; cursor: pointer; transition: background .12s; border: 1.5px solid transparent; margin-bottom: 4px; }
     .post-list-item:hover { background: var(--cream); }
     .post-list-item.active { background: var(--pink); border-color: var(--orange); }
     .pli-title { font-size: 13px; font-weight: 600; line-height: 1.3; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .pli-meta { font-size: 11px; color: var(--mid); display: flex; gap: 6px; align-items: center; }
-    .pli-status {
-      display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.08em; padding: 1px 6px; border-radius: 20px;
-    }
+    .pli-status { display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 1px 6px; border-radius: 20px; }
     .pli-status.published { background: #D1FAE5; color: #059669; }
     .pli-status.draft { background: #FEF3C7; color: #92400E; }
-    .sidebar-footer { padding: 12px 16px; border-top: 1px solid var(--border); }
-    .sidebar-stats { font-size: 12px; color: var(--mid); }
+    .sidebar-footer { padding: 12px 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--mid); }
 
-    /* ─── MAIN EDITOR ─── */
+    /* EDITOR AREA */
     .editor-area { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
-
-    /* Empty state */
-    .editor-empty {
-      flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center; padding: 40px;
-    }
+    .editor-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 40px; }
     .editor-empty .emoji { font-size: 56px; margin-bottom: 16px; }
     .editor-empty h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
     .editor-empty p { font-size: 14px; color: var(--mid); margin-bottom: 24px; }
+    .btn-publish-big { padding: 12px 24px; border-radius: 8px; border: none; background: var(--orange); color: #fff; font-size: 14px; font-weight: 700; transition: opacity .15s; }
+    .btn-publish-big:hover { opacity: .88; }
 
-    /* Editor */
     .editor { flex: 1; display: none; flex-direction: column; }
     .editor.active { display: flex; }
 
-    /* Editor topbar */
-    .editor-topbar {
-      border-bottom: 1px solid var(--border); background: #fff;
-      padding: 12px 24px; display: flex; align-items: center; gap: 12px;
-      position: sticky; top: 52px; z-index: 100;
-    }
-    .editor-topbar-title { font-size: 13px; font-weight: 700; color: var(--mid); }
+    .editor-topbar { border-bottom: 1px solid var(--border); background: #fff; padding: 12px 24px; display: flex; align-items: center; gap: 12px; position: sticky; top: 52px; z-index: 100; }
+    .editor-topbar-title { font-size: 13px; font-weight: 700; color: var(--mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px; }
     .et-spacer { flex: 1; }
-    .btn-draft {
-      padding: 8px 16px; border-radius: 8px; border: 1.5px solid var(--border);
-      background: #fff; font-size: 13px; font-weight: 600; color: var(--dark);
-      transition: all .15s;
-    }
-    .btn-draft:hover { border-color: var(--dark); }
-    .btn-publish {
-      padding: 8px 20px; border-radius: 8px; border: none;
-      background: var(--orange); color: #fff; font-size: 13px; font-weight: 700;
-      transition: opacity .15s;
-    }
-    .btn-publish:hover { opacity: 0.88; }
-    .btn-delete {
-      padding: 8px 14px; border-radius: 8px; border: 1.5px solid #FEE2E2;
-      background: #fff; font-size: 13px; font-weight: 600; color: #DC2626;
-      transition: all .15s;
-    }
-    .btn-delete:hover { background: #FEE2E2; }
-    .save-status {
-      font-size: 12px; color: var(--mid);
-      opacity: 0; transition: opacity .3s;
-    }
+    .save-status { font-size: 12px; color: var(--mid); opacity: 0; transition: opacity .3s; }
     .save-status.show { opacity: 1; }
+    .btn-draft { padding: 8px 16px; border-radius: 8px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 600; color: var(--dark); transition: all .15s; }
+    .btn-draft:hover { border-color: var(--dark); }
+    .btn-publish { padding: 8px 20px; border-radius: 8px; border: none; background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; transition: opacity .15s; }
+    .btn-publish:hover { opacity: .88; }
+    .btn-delete { padding: 8px 14px; border-radius: 8px; border: 1.5px solid #FEE2E2; background: #fff; font-size: 13px; font-weight: 600; color: #DC2626; transition: all .15s; display: none; }
+    .btn-delete:hover { background: #FEE2E2; }
 
-    /* Editor body */
     .editor-body { display: grid; grid-template-columns: 1fr 300px; flex: 1; }
-
-    /* Editor left (content) */
-    .editor-left { padding: 32px 32px; border-right: 1px solid var(--border); }
+    .editor-left { padding: 32px; border-right: 1px solid var(--border); }
 
     .field-group { margin-bottom: 24px; }
-    .field-label {
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--mid); display: block; margin-bottom: 6px;
-    }
+    .field-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); display: block; margin-bottom: 6px; }
     .field-hint { font-size: 11px; color: #aaa; margin-top: 4px; }
 
-    .title-input {
-      width: 100%; font-family: var(--font); font-size: 28px; font-weight: 800;
-      letter-spacing: -0.03em; border: none; outline: none; background: transparent;
-      color: var(--dark); line-height: 1.2; resize: none;
-    }
+    .title-input { width: 100%; font-family: var(--font); font-size: 28px; font-weight: 800; letter-spacing: -0.03em; border: none; outline: none; background: transparent; color: var(--dark); line-height: 1.2; resize: none; }
     .title-input::placeholder { color: #ccc; }
-
-    .excerpt-input {
-      width: 100%; font-family: var(--font); font-size: 15px; line-height: 1.6;
-      border: none; outline: none; background: transparent; color: var(--mid);
-      resize: none;
-    }
+    .excerpt-input { width: 100%; font-family: var(--font); font-size: 15px; line-height: 1.6; border: none; outline: none; background: transparent; color: var(--mid); resize: none; }
     .excerpt-input::placeholder { color: #ccc; }
 
-    /* Rich text toolbar */
-    .rte-toolbar {
-      display: flex; gap: 2px; flex-wrap: wrap;
-      padding: 8px 0; border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border); margin-bottom: 16px;
-    }
-    .rte-btn {
-      width: 32px; height: 32px; border: none; background: none;
-      border-radius: 6px; font-size: 13px; font-weight: 700; color: var(--dark);
-      display: flex; align-items: center; justify-content: center;
-      transition: background .12s; flex-shrink: 0;
-    }
+    .rte-toolbar { display: flex; gap: 2px; flex-wrap: wrap; padding: 8px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .rte-btn { width: 32px; height: 32px; border: none; background: none; border-radius: 6px; font-size: 13px; font-weight: 700; color: var(--dark); display: flex; align-items: center; justify-content: center; transition: background .12s; }
     .rte-btn:hover { background: var(--cream); }
-    .rte-btn.active { background: var(--pink); color: var(--orange); }
-    .rte-divider { width: 1px; background: var(--border); margin: 4px 4px; }
     .rte-btn-wide { width: auto; padding: 0 10px; font-size: 12px; }
-
-    .rte-editor {
-      min-height: 400px; outline: none; font-size: 16px; line-height: 1.75;
-      color: #222;
-    }
-    .rte-editor:empty::before {
-      content: attr(data-placeholder); color: #ccc; pointer-events: none;
-    }
-    .rte-editor h2 { font-size: 22px; font-weight: 800; margin: 32px 0 12px; letter-spacing: -0.02em; }
+    .rte-divider { width: 1px; background: var(--border); margin: 4px; }
+    .rte-editor { min-height: 400px; outline: none; font-size: 16px; line-height: 1.75; color: #222; }
+    .rte-editor:empty::before { content: attr(data-placeholder); color: #ccc; pointer-events: none; }
+    .rte-editor h2 { font-size: 22px; font-weight: 800; margin: 32px 0 12px; }
     .rte-editor h3 { font-size: 18px; font-weight: 700; margin: 24px 0 8px; }
     .rte-editor p { margin-bottom: 16px; }
     .rte-editor ul, .rte-editor ol { padding-left: 24px; margin-bottom: 16px; }
     .rte-editor li { margin-bottom: 6px; }
-    .rte-editor blockquote {
-      border-left: 3px solid var(--orange); padding-left: 16px;
-      margin: 24px 0; color: var(--mid); font-style: italic;
-    }
+    .rte-editor blockquote { border-left: 3px solid var(--orange); padding-left: 16px; margin: 24px 0; color: var(--mid); font-style: italic; }
     .rte-editor a { color: var(--orange); text-decoration: underline; }
 
-    /* Editor right (settings) */
     .editor-right { padding: 24px 20px; background: #FAFAFA; overflow-y: auto; }
     .settings-group { margin-bottom: 28px; }
-    .settings-group-label {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--mid); margin-bottom: 12px;
-      padding-bottom: 8px; border-bottom: 1px solid var(--border);
-    }
-
+    .settings-group-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
     .field { margin-bottom: 14px; }
     .field label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 5px; }
-    .field input, .field select, .field textarea {
-      width: 100%; padding: 8px 10px; border: 1.5px solid var(--border);
-      border-radius: 8px; font-family: var(--font); font-size: 13px;
-      background: #fff; outline: none; transition: border-color .15s; color: var(--dark);
-    }
+    .field input, .field select, .field textarea { width: 100%; padding: 8px 10px; border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--font); font-size: 13px; background: #fff; outline: none; transition: border-color .15s; color: var(--dark); }
     .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--orange); }
     .field textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
 
-    /* SEO preview */
-    .seo-preview {
-      background: #fff; border: 1px solid var(--border); border-radius: 8px;
-      padding: 14px; margin-top: 8px;
-    }
+    .seo-preview { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-top: 8px; }
     .seo-preview-url { font-size: 11px; color: #1a73e8; margin-bottom: 3px; }
-    .seo-preview-title { font-size: 16px; color: #1a0dab; font-weight: 400; line-height: 1.3; margin-bottom: 3px; }
+    .seo-preview-title { font-size: 16px; color: #1a0dab; line-height: 1.3; margin-bottom: 3px; }
     .seo-preview-desc { font-size: 13px; color: #4d5156; line-height: 1.4; }
     .char-count { font-size: 11px; color: var(--mid); text-align: right; margin-top: 3px; }
     .char-count.over { color: #e53; }
 
-    /* Emoji picker row */
     .emoji-row { display: flex; flex-wrap: wrap; gap: 6px; }
-    .emoji-opt {
-      width: 34px; height: 34px; border: 1.5px solid var(--border);
-      border-radius: 8px; font-size: 18px; background: #fff; transition: all .12s;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .emoji-opt { width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 18px; background: #fff; transition: all .12s; display: flex; align-items: center; justify-content: center; }
     .emoji-opt:hover { border-color: var(--orange); }
     .emoji-opt.selected { border-color: var(--orange); background: var(--pink); }
 
-    /* Cover image */
-    .cover-img-preview {
-      width: 100%; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden;
-      background: var(--pink); margin-top: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 32px; border: 1.5px dashed var(--border);
-    }
+    .cover-img-preview { width: 100%; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; background: var(--pink); margin-top: 8px; display: flex; align-items: center; justify-content: center; font-size: 32px; border: 1.5px dashed var(--border); }
     .cover-img-preview img { width: 100%; height: 100%; object-fit: cover; }
     .cover-img-preview.has-img { border-style: solid; }
-    .cover-clear {
-      font-size: 11px; color: #e53; cursor: pointer; margin-top: 4px;
-      display: none; border: none; background: none; padding: 0; font-family: var(--font);
-    }
+    .cover-clear { font-size: 11px; color: #e53; cursor: pointer; margin-top: 4px; display: none; border: none; background: none; padding: 0; font-family: var(--font); }
 
-    /* Toast */
-    .toast {
-      position: fixed; bottom: 24px; right: 24px; z-index: 999;
-      background: var(--dark); color: #fff; padding: 12px 20px;
-      border-radius: 8px; font-size: 13px; font-weight: 600;
-      transform: translateY(80px); opacity: 0; transition: all .25s;
-      pointer-events: none;
-    }
+    .toast { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--dark); color: #fff; padding: 12px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; transform: translateY(80px); opacity: 0; transition: all .25s; pointer-events: none; }
     .toast.show { transform: translateY(0); opacity: 1; }
     .toast.success { background: #059669; }
     .toast.error { background: #DC2626; }
 
-    /* Confirm modal */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-      z-index: 500; display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity .2s;
-    }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .2s; }
     .modal-overlay.show { opacity: 1; pointer-events: all; }
-    .modal {
-      background: #fff; border-radius: 12px; padding: 32px;
-      max-width: 380px; width: 100%; text-align: center;
-    }
+    .modal { background: #fff; border-radius: 12px; padding: 32px; max-width: 380px; width: 100%; text-align: center; }
     .modal h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
     .modal p { font-size: 14px; color: var(--mid); margin-bottom: 24px; }
     .modal-actions { display: flex; gap: 10px; justify-content: center; }
-    .modal-cancel {
-      padding: 10px 20px; border-radius: 8px; border: 1.5px solid var(--border);
-      background: #fff; font-size: 13px; font-weight: 600;
-    }
-    .modal-confirm {
-      padding: 10px 20px; border-radius: 8px; border: none;
-      background: #DC2626; color: #fff; font-size: 13px; font-weight: 700;
-    }
+    .modal-cancel { padding: 10px 20px; border-radius: 8px; border: 1.5px solid var(--border); background: #fff; font-size: 13px; font-weight: 600; }
+    .modal-confirm { padding: 10px 20px; border-radius: 8px; border: none; background: #DC2626; color: #fff; font-size: 13px; font-weight: 700; }
 
-    @media (max-width: 900px) {
-      .editor-body { grid-template-columns: 1fr; }
-      .editor-right { border-top: 1px solid var(--border); }
-    }
-    @media (max-width: 700px) {
-      .sidebar { display: none; }
-    }
+    @media (max-width: 900px) { .editor-body { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) { .sidebar { display: none; } }
   </style>
 </head>
 <body>
 
-<!-- ─── LOGIN ─── -->
+<!-- LOGIN -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
     <img class="login-logo" src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" />
     <h1>Blog Admin</h1>
     <p>Sign in to manage your posts</p>
     <div class="login-field">
-      <label>Username</label>
-      <input type="text" id="loginUser" placeholder="admin" autocomplete="username" />
-    </div>
-    <div class="login-field">
       <label>Password</label>
       <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password" />
     </div>
     <button class="login-btn" onclick="tryLogin()">Sign in →</button>
-    <p class="login-error" id="loginError">Incorrect credentials. Try again.</p>
+    <p class="login-error" id="loginError">Incorrect password. Try again.</p>
   </div>
 </div>
 
-<!-- ─── APP ─── -->
+<!-- APP -->
 <div class="app" id="app">
-
-  <!-- Top bar -->
   <header class="topbar">
     <img class="topbar-logo" src="https://pub-53c61acbe6f3445bb346885dedb4274d.r2.dev/atla%20%2B%20puffin.png" alt="atla + puffin" />
     <span class="topbar-label">Blog Admin</span>
     <div class="topbar-right">
-      <a class="topbar-view-blog" href="blog.html" target="_blank">↗ View blog</a>
+      <a class="topbar-view-blog" href="/blog" target="_blank">↗ View blog</a>
       <button class="topbar-logout" onclick="logout()">Sign out</button>
     </div>
   </header>
 
   <div class="app-body">
-
-    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-section">
         <div class="sidebar-section-label">Posts</div>
         <button class="new-post-btn" onclick="newPost()"><span>+</span> New post</button>
       </div>
       <div class="posts-list" id="postsList"></div>
-      <div class="sidebar-footer">
-        <div class="sidebar-stats" id="sidebarStats"></div>
-      </div>
+      <div class="sidebar-footer" id="sidebarStats"></div>
     </aside>
 
-    <!-- Editor area -->
     <div class="editor-area" id="editorArea">
-
-      <!-- Empty state -->
       <div class="editor-empty" id="editorEmpty">
         <div class="emoji">✍️</div>
         <h2>Nothing selected</h2>
         <p>Pick a post from the sidebar or start a new one.</p>
-        <button class="btn-publish" onclick="newPost()" style="padding:12px 24px">Write your first post →</button>
+        <button class="btn-publish-big" onclick="newPost()">Write your first post →</button>
       </div>
 
-      <!-- Editor -->
       <div class="editor" id="editor">
-
-        <!-- Editor topbar -->
         <div class="editor-topbar">
           <span class="editor-topbar-title" id="editorTopTitle">New post</span>
           <span class="et-spacer"></span>
           <span class="save-status" id="saveStatus">✓ Saved</span>
-          <button class="btn-delete" onclick="confirmDelete()" id="deleteBtn" style="display:none">Delete</button>
+          <button class="btn-delete" id="deleteBtn" onclick="confirmDelete()">Delete</button>
           <button class="btn-draft" onclick="savePost('draft')">Save draft</button>
           <button class="btn-publish" onclick="savePost('published')">Publish ↗</button>
         </div>
 
         <div class="editor-body">
-
-          <!-- Left: content -->
           <div class="editor-left">
             <div class="field-group">
               <textarea class="title-input" id="postTitle" rows="2"
                 placeholder="Your post title…"
                 oninput="onTitleChange(this); autoResize(this)"></textarea>
             </div>
-
             <div class="field-group">
               <label class="field-label">Excerpt / Intro</label>
               <textarea class="excerpt-input" id="postExcerpt" rows="3"
@@ -423,41 +231,37 @@
               <p class="field-hint">Used in Google snippets — keep under 160 chars.</p>
             </div>
 
-            <!-- Rich text toolbar -->
-            <div class="rte-toolbar" id="rteToolbar">
+            <div class="rte-toolbar">
               <button class="rte-btn" onclick="fmt('bold')" title="Bold"><b>B</b></button>
               <button class="rte-btn" onclick="fmt('italic')" title="Italic"><i>I</i></button>
               <button class="rte-btn" onclick="fmt('underline')" title="Underline"><u>U</u></button>
               <div class="rte-divider"></div>
-              <button class="rte-btn rte-btn-wide" onclick="fmt('formatBlock','<H2>')" title="Heading 2">H2</button>
-              <button class="rte-btn rte-btn-wide" onclick="fmt('formatBlock','<H3>')" title="Heading 3">H3</button>
-              <button class="rte-btn rte-btn-wide" onclick="fmt('formatBlock','<P>')" title="Paragraph">¶</button>
+              <button class="rte-btn rte-btn-wide" onclick="fmt('formatBlock','<H2>')">H2</button>
+              <button class="rte-btn rte-btn-wide" onclick="fmt('formatBlock','<H3>')">H3</button>
+              <button class="rte-btn rte-btn-wide" onclick="fmt('formatBlock','<P>')">¶</button>
               <div class="rte-divider"></div>
-              <button class="rte-btn" onclick="fmt('insertUnorderedList')" title="Bullet list">• —</button>
-              <button class="rte-btn" onclick="fmt('insertOrderedList')" title="Numbered list">1.</button>
-              <button class="rte-btn" onclick="fmt('formatBlock','<BLOCKQUOTE>')" title="Quote">"</button>
+              <button class="rte-btn" onclick="fmt('insertUnorderedList')">• —</button>
+              <button class="rte-btn" onclick="fmt('insertOrderedList')">1.</button>
+              <button class="rte-btn" onclick="fmt('formatBlock','<BLOCKQUOTE>')">"</button>
               <div class="rte-divider"></div>
               <button class="rte-btn" onclick="insertLink()" title="Link">🔗</button>
-              <button class="rte-btn" onclick="fmt('removeFormat')" title="Clear format">✕</button>
+              <button class="rte-btn" onclick="fmt('removeFormat')" title="Clear">✕</button>
             </div>
-
             <div class="rte-editor" id="rteEditor" contenteditable="true"
               data-placeholder="Start writing your post…"></div>
           </div>
 
-          <!-- Right: settings -->
           <div class="editor-right">
-
             <div class="settings-group">
               <div class="settings-group-label">Post settings</div>
               <div class="field">
                 <label>Category</label>
                 <select id="postCategory">
-                  <option value="Tips &amp; Guides">Tips &amp; Guides</option>
-                  <option value="Gear">Gear</option>
-                  <option value="Community">Community</option>
-                  <option value="News">News</option>
-                  <option value="Fun">Fun</option>
+                  <option>Tips &amp; Guides</option>
+                  <option>Gear</option>
+                  <option>Community</option>
+                  <option>News</option>
+                  <option>Fun</option>
                 </select>
               </div>
               <div class="field">
@@ -466,9 +270,7 @@
               </div>
               <div class="field">
                 <label>Cover emoji (if no image)</label>
-                <div class="emoji-row" id="emojiRow">
-                  🏓 🎾 🏸 🏆 🎯 🔥 💥 😂 👏 🌈
-                </div>
+                <div class="emoji-row" id="emojiRow"></div>
               </div>
             </div>
 
@@ -496,20 +298,20 @@
               </div>
               <div class="field">
                 <label>Keywords <span style="font-weight:400;color:#aaa">(comma separated)</span></label>
-                <input type="text" id="seoKeywords" placeholder="pickleball Singapore, paddle, beginner" />
+                <input type="text" id="seoKeywords" placeholder="pickleball Singapore, paddle" />
               </div>
               <div class="field">
                 <label>URL slug</label>
-                <input type="text" id="postSlug" placeholder="auto-generated" oninput="updateSeoPreview()" />
+                <input type="text" id="postSlug" placeholder="auto-generated from title" oninput="updateSeoPreview()" />
+                <p class="field-hint">atlapuffin.com/blog/<span id="slugPreviewInline" style="color:var(--orange)">your-slug</span></p>
               </div>
 
               <div class="seo-preview">
                 <div class="seo-preview-url" id="seoPreviewUrl">atlapuffin.com/blog/…</div>
                 <div class="seo-preview-title" id="seoPreviewTitle">Your post title</div>
-                <div class="seo-preview-desc" id="seoPreviewDesc">Your meta description or excerpt will appear here.</div>
+                <div class="seo-preview-desc" id="seoPreviewDesc">Your meta description will appear here.</div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -517,14 +319,11 @@
   </div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
-
-<!-- Delete modal -->
 <div class="modal-overlay" id="deleteModal">
   <div class="modal">
     <h3>Delete this post?</h3>
-    <p>This can't be undone. The post will be permanently removed from the blog.</p>
+    <p>This can't be undone. The post will be permanently removed.</p>
     <div class="modal-actions">
       <button class="modal-cancel" onclick="closeModal()">Cancel</button>
       <button class="modal-confirm" onclick="deletePost()">Yes, delete</button>
@@ -533,345 +332,308 @@
 </div>
 
 <script>
-// ─── AUTH ─────────────────────────────────────────────────
-// Change these credentials — stored client-side only
-const ADMIN_USER = 'admin';
-const ADMIN_PASS = 'atlapuffin2025';
-const SESSION_KEY = 'atlapuffin_admin_session';
+  // ── Auth ──────────────────────────────────────────────────
+  // The token is checked server-side — this just stores it in session
+  const SESSION_KEY = 'atlapuffin_admin_token';
 
-function tryLogin() {
-  const u = document.getElementById('loginUser').value.trim();
-  const p = document.getElementById('loginPass').value;
-  if (u === ADMIN_USER && p === ADMIN_PASS) {
-    sessionStorage.setItem(SESSION_KEY, '1');
+  function getToken() { return sessionStorage.getItem(SESSION_KEY); }
+
+  async function tryLogin() {
+    const pass = document.getElementById('loginPass').value;
+    // Exchange password for token via API
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pass })
+      });
+      if (res.ok) {
+        const { token } = await res.json();
+        sessionStorage.setItem(SESSION_KEY, token);
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('app').classList.add('active');
+        loadApp();
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    } catch {
+      document.getElementById('loginError').style.display = 'block';
+    }
+  }
+
+  document.getElementById('loginPass').addEventListener('keydown', e => {
+    if (e.key === 'Enter') tryLogin();
+  });
+
+  function logout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    location.reload();
+  }
+
+  // Auto-restore session
+  if (getToken()) {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('app').classList.add('active');
-    loadApp();
-  } else {
-    document.getElementById('loginError').style.display = 'block';
-  }
-}
-
-document.getElementById('loginPass').addEventListener('keydown', e => {
-  if (e.key === 'Enter') tryLogin();
-});
-
-function logout() {
-  sessionStorage.removeItem(SESSION_KEY);
-  location.reload();
-}
-
-// Auto-restore session
-if (sessionStorage.getItem(SESSION_KEY)) {
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('app').classList.add('active');
-}
-
-// ─── STORAGE ──────────────────────────────────────────────
-const POSTS_KEY = 'atlapuffin_posts';
-
-async function loadPosts() {
-  try {
-    const r = await window.storage.get(POSTS_KEY, true);
-    return r ? JSON.parse(r.value) : [];
-  } catch { return []; }
-}
-
-async function savePosts(posts) {
-  try {
-    await window.storage.set(POSTS_KEY, JSON.stringify(posts), true);
-    return true;
-  } catch { return false; }
-}
-
-// ─── STATE ────────────────────────────────────────────────
-let posts = [];
-let currentId = null;
-let selectedEmoji = '🏓';
-const EMOJIS = ['🏓','🎾','🏸','🏆','🎯','🔥','💥','😂','👏','🌈'];
-
-function genId() {
-  return Date.now().toString(36) + Math.random().toString(36).slice(2,6);
-}
-
-function slugify(s) {
-  return (s || '').toLowerCase()
-    .replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60);
-}
-
-function formatDateShort(iso) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  return d.toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' });
-}
-
-// ─── SIDEBAR ──────────────────────────────────────────────
-function renderSidebar() {
-  const list = document.getElementById('postsList');
-  const stats = document.getElementById('sidebarStats');
-  const sorted = [...posts].sort((a,b) => new Date(b.updatedAt||b.publishedAt) - new Date(a.updatedAt||a.publishedAt));
-
-  if (!sorted.length) {
-    list.innerHTML = '<p style="font-size:12px;color:var(--mid);padding:12px 10px">No posts yet. Create one!</p>';
-  } else {
-    list.innerHTML = sorted.map(p => `
-      <div class="post-list-item ${p.id === currentId ? 'active':''}" onclick="selectPost('${p.id}')">
-        <div class="pli-title">${p.title || 'Untitled'}</div>
-        <div class="pli-meta">
-          <span class="pli-status ${p.status}">${p.status}</span>
-          <span>${formatDateShort(p.publishedAt)}</span>
-        </div>
-      </div>`).join('');
   }
 
-  const pub = posts.filter(p=>p.status==='published').length;
-  const dft = posts.filter(p=>p.status==='draft').length;
-  stats.textContent = `${pub} published · ${dft} draft`;
-}
+  // ── API helpers ──────────────────────────────────────────
+  async function apiFetch(path, options = {}) {
+    const res = await fetch(path, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getToken()}`,
+        ...(options.headers || {})
+      }
+    });
+    if (res.status === 401) { logout(); throw new Error('Unauthorized'); }
+    return res;
+  }
 
-// ─── EDITOR ───────────────────────────────────────────────
-function showEditor() {
-  document.getElementById('editorEmpty').style.display = 'none';
-  document.getElementById('editor').classList.add('active');
-}
+  // ── State ────────────────────────────────────────────────
+  let posts = [];
+  let currentId = null;
+  let selectedEmoji = '🏓';
+  const EMOJIS = ['🏓','🎾','🏸','🏆','🎯','🔥','💥','😂','👏','🌈'];
 
-function showEmpty() {
-  document.getElementById('editorEmpty').style.display = 'flex';
-  document.getElementById('editor').classList.remove('active');
-  currentId = null;
-  renderSidebar();
-}
+  function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+  function slugify(s) {
+    return (s||'').toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60);
+  }
+  function formatDateShort(iso) {
+    if (!iso) return '';
+    return new Date(iso).toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' });
+  }
 
-function newPost() {
-  currentId = null;
-  document.getElementById('postTitle').value = '';
-  document.getElementById('postExcerpt').value = '';
-  document.getElementById('rteEditor').innerHTML = '';
-  document.getElementById('postCategory').value = 'Tips & Guides';
-  document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
-  document.getElementById('coverImageUrl').value = '';
-  document.getElementById('seoTitle').value = '';
-  document.getElementById('seoDesc').value = '';
-  document.getElementById('seoKeywords').value = '';
-  document.getElementById('postSlug').value = '';
-  document.getElementById('deleteBtn').style.display = 'none';
-  document.getElementById('editorTopTitle').textContent = 'New post';
-  selectEmoji('🏓');
-  updateCoverPreview();
-  updateSeoPreview();
-  renderSidebar();
-  showEditor();
-  document.getElementById('postTitle').focus();
-}
-
-function selectPost(id) {
-  const post = posts.find(p => p.id === id);
-  if (!post) return;
-  currentId = id;
-
-  document.getElementById('postTitle').value = post.title || '';
-  document.getElementById('postExcerpt').value = post.excerpt || '';
-  document.getElementById('rteEditor').innerHTML = post.body || '';
-  document.getElementById('postCategory').value = post.category || 'Tips & Guides';
-  document.getElementById('postDate').value = post.publishedAt ? post.publishedAt.split('T')[0] : new Date().toISOString().split('T')[0];
-  document.getElementById('coverImageUrl').value = post.coverImage || '';
-  document.getElementById('seoTitle').value = post.seoTitle || '';
-  document.getElementById('seoDesc').value = post.seoDesc || '';
-  document.getElementById('seoKeywords').value = post.seoKeywords || '';
-  document.getElementById('postSlug').value = post.slug || '';
-  document.getElementById('deleteBtn').style.display = 'inline-flex';
-  document.getElementById('editorTopTitle').textContent = post.title || 'Untitled';
-  selectEmoji(post.emoji || '🏓');
-  updateCoverPreview();
-  updateSeoPreview();
-  renderSidebar();
-  showEditor();
-}
-
-// ─── SAVE ─────────────────────────────────────────────────
-async function savePost(status) {
-  const title = document.getElementById('postTitle').value.trim();
-  const excerpt = document.getElementById('postExcerpt').value.trim();
-  const body = document.getElementById('rteEditor').innerHTML;
-  const category = document.getElementById('postCategory').value;
-  const dateVal = document.getElementById('postDate').value;
-  const coverImage = document.getElementById('coverImageUrl').value.trim();
-  const seoTitle = document.getElementById('seoTitle').value.trim();
-  const seoDesc = document.getElementById('seoDesc').value.trim();
-  const seoKeywords = document.getElementById('seoKeywords').value.trim();
-  const slugInput = document.getElementById('postSlug').value.trim();
-  const slug = slugInput || slugify(title);
-
-  if (!title) { showToast('Add a title first', 'error'); return; }
-
-  const now = new Date().toISOString();
-
-  if (currentId) {
-    const idx = posts.findIndex(p => p.id === currentId);
-    if (idx > -1) {
-      posts[idx] = {
-        ...posts[idx], title, excerpt, body, category, emoji: selectedEmoji,
-        coverImage, seoTitle, seoDesc, seoKeywords, slug,
-        publishedAt: dateVal ? new Date(dateVal).toISOString() : posts[idx].publishedAt,
-        status, updatedAt: now
-      };
+  // ── Sidebar ──────────────────────────────────────────────
+  function renderSidebar() {
+    const list = document.getElementById('postsList');
+    const stats = document.getElementById('sidebarStats');
+    if (!posts.length) {
+      list.innerHTML = '<p style="font-size:12px;color:var(--mid);padding:12px 10px">No posts yet.</p>';
+    } else {
+      list.innerHTML = [...posts]
+        .sort((a,b) => new Date(b.updated_at||b.published_at) - new Date(a.updated_at||a.published_at))
+        .map(p => `
+          <div class="post-list-item ${p.id===currentId?'active':''}" onclick="selectPost('${p.id}')">
+            <div class="pli-title">${p.title||'Untitled'}</div>
+            <div class="pli-meta">
+              <span class="pli-status ${p.status}">${p.status}</span>
+              <span>${formatDateShort(p.published_at)}</span>
+            </div>
+          </div>`).join('');
     }
-  } else {
-    const newP = {
-      id: genId(), title, excerpt, body, category, emoji: selectedEmoji,
-      coverImage, seoTitle, seoDesc, seoKeywords, slug,
-      publishedAt: dateVal ? new Date(dateVal).toISOString() : now,
-      status, createdAt: now, updatedAt: now
-    };
-    posts.unshift(newP);
-    currentId = newP.id;
+    const pub = posts.filter(p=>p.status==='published').length;
+    const dft = posts.filter(p=>p.status==='draft').length;
+    stats.textContent = `${pub} published · ${dft} draft`;
+  }
+
+  // ── Editor ───────────────────────────────────────────────
+  function showEditor() {
+    document.getElementById('editorEmpty').style.display = 'none';
+    document.getElementById('editor').classList.add('active');
+  }
+  function showEmpty() {
+    document.getElementById('editorEmpty').style.display = 'flex';
+    document.getElementById('editor').classList.remove('active');
+    currentId = null;
+    renderSidebar();
+  }
+
+  function fillEditor(post) {
+    document.getElementById('postTitle').value = post.title || '';
+    document.getElementById('postExcerpt').value = post.excerpt || '';
+    document.getElementById('rteEditor').innerHTML = post.body || '';
+    document.getElementById('postCategory').value = post.category || 'Tips & Guides';
+    document.getElementById('postDate').value = post.published_at ? post.published_at.split('T')[0] : new Date().toISOString().split('T')[0];
+    document.getElementById('coverImageUrl').value = post.cover_image || '';
+    document.getElementById('seoTitle').value = post.seo_title || '';
+    document.getElementById('seoDesc').value = post.seo_desc || '';
+    document.getElementById('seoKeywords').value = post.seo_keywords || '';
+    document.getElementById('postSlug').value = post.slug || '';
+    selectEmoji(post.emoji || '🏓');
+    updateCoverPreview();
+    updateSeoPreview();
+  }
+
+  function newPost() {
+    currentId = null;
+    fillEditor({});
+    document.getElementById('deleteBtn').style.display = 'none';
+    document.getElementById('editorTopTitle').textContent = 'New post';
+    renderSidebar();
+    showEditor();
+    document.getElementById('postTitle').focus();
+  }
+
+  function selectPost(id) {
+    const post = posts.find(p => p.id === id);
+    if (!post) return;
+    currentId = id;
+    fillEditor(post);
     document.getElementById('deleteBtn').style.display = 'inline-flex';
+    document.getElementById('editorTopTitle').textContent = post.title || 'Untitled';
+    renderSidebar();
+    showEditor();
   }
 
-  const ok = await savePosts(posts);
-  document.getElementById('editorTopTitle').textContent = title;
-  renderSidebar();
+  // ── Save ────────────────────────────────────────────────
+  async function savePost(status) {
+    const title = document.getElementById('postTitle').value.trim();
+    if (!title) { showToast('Add a title first', 'error'); return; }
 
-  if (ok) {
-    const msg = status === 'published' ? '✓ Published!' : '✓ Saved as draft';
-    showSaveStatus(msg);
-    showToast(msg, 'success');
-  } else {
-    showToast('Save failed — try again', 'error');
+    const slugInput = document.getElementById('postSlug').value.trim();
+    const slug = slugInput || slugify(title);
+    const dateVal = document.getElementById('postDate').value;
+
+    const payload = {
+      id: currentId || genId(),
+      slug,
+      title,
+      excerpt: document.getElementById('postExcerpt').value.trim(),
+      body: document.getElementById('rteEditor').innerHTML,
+      category: document.getElementById('postCategory').value,
+      emoji: selectedEmoji,
+      cover_image: document.getElementById('coverImageUrl').value.trim(),
+      seo_title: document.getElementById('seoTitle').value.trim(),
+      seo_desc: document.getElementById('seoDesc').value.trim(),
+      seo_keywords: document.getElementById('seoKeywords').value.trim(),
+      status,
+      published_at: dateVal ? new Date(dateVal).toISOString() : new Date().toISOString()
+    };
+
+    try {
+      let res;
+      if (currentId) {
+        res = await apiFetch(`/api/posts/${currentId}`, { method: 'PUT', body: JSON.stringify(payload) });
+      } else {
+        res = await apiFetch('/api/posts', { method: 'POST', body: JSON.stringify(payload) });
+        currentId = payload.id;
+        document.getElementById('deleteBtn').style.display = 'inline-flex';
+      }
+
+      if (!res.ok) throw new Error('Save failed');
+      const { post } = await res.json();
+
+      // Update local state
+      const idx = posts.findIndex(p => p.id === post.id);
+      if (idx > -1) posts[idx] = post; else posts.unshift(post);
+
+      document.getElementById('editorTopTitle').textContent = post.title;
+      document.getElementById('postSlug').value = post.slug;
+      renderSidebar();
+      updateSeoPreview();
+
+      const msg = status === 'published' ? '✓ Published!' : '✓ Saved as draft';
+      showSaveStatus(msg);
+      showToast(msg, 'success');
+    } catch (e) {
+      showToast('Save failed — check your connection', 'error');
+    }
   }
-}
 
-// ─── DELETE ───────────────────────────────────────────────
-function confirmDelete() {
-  document.getElementById('deleteModal').classList.add('show');
-}
-function closeModal() {
-  document.getElementById('deleteModal').classList.remove('show');
-}
-async function deletePost() {
-  closeModal();
-  if (!currentId) return;
-  posts = posts.filter(p => p.id !== currentId);
-  await savePosts(posts);
-  showToast('Post deleted', 'error');
-  showEmpty();
-}
+  // ── Delete ──────────────────────────────────────────────
+  function confirmDelete() { document.getElementById('deleteModal').classList.add('show'); }
+  function closeModal() { document.getElementById('deleteModal').classList.remove('show'); }
 
-// ─── RICH TEXT ────────────────────────────────────────────
-function fmt(cmd, val) {
-  document.getElementById('rteEditor').focus();
-  document.execCommand(cmd, false, val || null);
-}
+  async function deletePost() {
+    closeModal();
+    if (!currentId) return;
+    try {
+      await apiFetch(`/api/posts/${currentId}`, { method: 'DELETE' });
+      posts = posts.filter(p => p.id !== currentId);
+      showToast('Post deleted', 'error');
+      showEmpty();
+    } catch { showToast('Delete failed', 'error'); }
+  }
 
-function insertLink() {
-  const url = prompt('Enter URL:');
-  if (url) {
+  // ── Rich text ────────────────────────────────────────────
+  function fmt(cmd, val) {
     document.getElementById('rteEditor').focus();
-    document.execCommand('createLink', false, url);
+    document.execCommand(cmd, false, val || null);
   }
-}
-
-// ─── EMOJI ────────────────────────────────────────────────
-function renderEmojiRow() {
-  const row = document.getElementById('emojiRow');
-  row.innerHTML = EMOJIS.map(e => `
-    <button class="emoji-opt ${e === selectedEmoji ? 'selected' : ''}"
-      onclick="selectEmoji('${e}')" title="${e}">${e}</button>
-  `).join('');
-}
-
-function selectEmoji(e) {
-  selectedEmoji = e;
-  renderEmojiRow();
-}
-
-// ─── COVER IMAGE ──────────────────────────────────────────
-function updateCoverPreview() {
-  const url = document.getElementById('coverImageUrl').value.trim();
-  const preview = document.getElementById('coverPreview');
-  const clearBtn = document.getElementById('coverClear');
-  if (url) {
-    preview.innerHTML = `<img src="${url}" alt="Cover" onerror="this.parentElement.innerHTML='❌ Invalid URL'" />`;
-    preview.classList.add('has-img');
-    clearBtn.style.display = 'block';
-  } else {
-    preview.innerHTML = '📸';
-    preview.classList.remove('has-img');
-    clearBtn.style.display = 'none';
+  function insertLink() {
+    const url = prompt('Enter URL:');
+    if (url) { document.getElementById('rteEditor').focus(); document.execCommand('createLink', false, url); }
   }
-}
 
-function clearCover() {
-  document.getElementById('coverImageUrl').value = '';
-  updateCoverPreview();
-}
+  // ── Emoji ────────────────────────────────────────────────
+  function renderEmojiRow() {
+    document.getElementById('emojiRow').innerHTML = EMOJIS.map(e =>
+      `<button class="emoji-opt ${e===selectedEmoji?'selected':''}" onclick="selectEmoji('${e}')">${e}</button>`
+    ).join('');
+  }
+  function selectEmoji(e) { selectedEmoji = e; renderEmojiRow(); }
 
-// ─── SEO PREVIEW ──────────────────────────────────────────
-function updateSeoPreview() {
-  const title = document.getElementById('postTitle').value.trim();
-  const excerpt = document.getElementById('postExcerpt').value.trim();
-  const seoTitle = document.getElementById('seoTitle').value.trim();
-  const seoDesc = document.getElementById('seoDesc').value.trim();
-  const slug = document.getElementById('postSlug').value.trim() || slugify(title);
+  // ── Cover image ──────────────────────────────────────────
+  function updateCoverPreview() {
+    const url = document.getElementById('coverImageUrl').value.trim();
+    const prev = document.getElementById('coverPreview');
+    const clr = document.getElementById('coverClear');
+    if (url) {
+      prev.innerHTML = `<img src="${url}" alt="Cover" onerror="this.parentElement.innerHTML='❌'" />`;
+      prev.classList.add('has-img'); clr.style.display = 'block';
+    } else {
+      prev.innerHTML = '📸'; prev.classList.remove('has-img'); clr.style.display = 'none';
+    }
+  }
+  function clearCover() { document.getElementById('coverImageUrl').value = ''; updateCoverPreview(); }
 
-  document.getElementById('seoPreviewUrl').textContent = `atlapuffin.com/blog/${slug || 'your-post-slug'}`;
-  document.getElementById('seoPreviewTitle').textContent = seoTitle || title || 'Your post title';
-  document.getElementById('seoPreviewDesc').textContent = seoDesc || excerpt || 'Your meta description or excerpt will appear here.';
+  // ── SEO preview ──────────────────────────────────────────
+  function updateSeoPreview() {
+    const title = document.getElementById('postTitle').value.trim();
+    const excerpt = document.getElementById('postExcerpt').value.trim();
+    const seoTitle = document.getElementById('seoTitle').value.trim();
+    const seoDesc = document.getElementById('seoDesc').value.trim();
+    const slug = document.getElementById('postSlug').value.trim() || slugify(title);
 
-  const st = document.getElementById('seoTitle').value.length;
-  const sd = document.getElementById('seoDesc').value.length;
-  const stEl = document.getElementById('seoTitleCount');
-  const sdEl = document.getElementById('seoDescCount');
-  stEl.textContent = `${st} / 60`;
-  stEl.classList.toggle('over', st > 60);
-  sdEl.textContent = `${sd} / 160`;
-  sdEl.classList.toggle('over', sd > 160);
-}
+    document.getElementById('slugPreviewInline').textContent = slug || 'your-slug';
+    document.getElementById('seoPreviewUrl').textContent = `atlapuffin.com/blog/${slug||'your-slug'}`;
+    document.getElementById('seoPreviewTitle').textContent = seoTitle || title || 'Your post title';
+    document.getElementById('seoPreviewDesc').textContent = seoDesc || excerpt || 'Your meta description will appear here.';
 
-function onTitleChange(el) {
-  document.getElementById('editorTopTitle').textContent = el.value || 'New post';
-  if (!document.getElementById('postSlug').value) updateSeoPreview();
-  else updateSeoPreview();
-}
+    const st = document.getElementById('seoTitle').value.length;
+    const sd = document.getElementById('seoDesc').value.length;
+    const stEl = document.getElementById('seoTitleCount');
+    const sdEl = document.getElementById('seoDescCount');
+    stEl.textContent = `${st} / 60`; stEl.classList.toggle('over', st > 60);
+    sdEl.textContent = `${sd} / 160`; sdEl.classList.toggle('over', sd > 160);
+  }
 
-function onExcerptChange() { updateSeoPreview(); }
+  function onTitleChange(el) {
+    document.getElementById('editorTopTitle').textContent = el.value || 'New post';
+    updateSeoPreview();
+  }
+  function onExcerptChange() { updateSeoPreview(); }
 
-// ─── UTILS ────────────────────────────────────────────────
-function autoResize(el) {
-  el.style.height = 'auto';
-  el.style.height = el.scrollHeight + 'px';
-}
+  // ── Utils ────────────────────────────────────────────────
+  function autoResize(el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; }
+  function showSaveStatus(msg) {
+    const el = document.getElementById('saveStatus');
+    el.textContent = msg; el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2500);
+  }
+  let toastTimer;
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.className = `toast ${type} show`;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+  }
 
-function showSaveStatus(msg) {
-  const el = document.getElementById('saveStatus');
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 2500);
-}
+  // ── Init ─────────────────────────────────────────────────
+  async function loadApp() {
+    renderEmojiRow();
+    document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+    try {
+      const res = await apiFetch('/api/posts?status=all');
+      const data = await res.json();
+      posts = data.posts || [];
+      renderSidebar();
+    } catch { showToast('Could not load posts', 'error'); }
+  }
 
-let toastTimer;
-function showToast(msg, type) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = `toast ${type} show`;
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-// ─── INIT ─────────────────────────────────────────────────
-async function loadApp() {
-  posts = await loadPosts();
-  renderSidebar();
-  renderEmojiRow();
-  // Set today's date default
-  document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
-}
-
-// Init if already logged in
-if (sessionStorage.getItem(SESSION_KEY)) {
-  loadApp();
-}
+  if (getToken()) loadApp();
 </script>
-
 </body>
 </html>
