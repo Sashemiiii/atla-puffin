@@ -1,9 +1,14 @@
 {
+  {
   "rewrites": [
-    { "source": "/blog", "destination": "/blog.html" },
     { "source": "/blog/:slug", "destination": "/blog-post.html" },
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/shop", "destination": "/shop.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/admin", "destination": "/admin.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" }
-  ],
+  ]
+}
   "headers": [
     {
       "source": "/api/(.*)",
